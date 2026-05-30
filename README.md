@@ -177,4 +177,7 @@ first-subcritical sacrifice fallback theorem in Lean; the full arbitrary finite
 base-spine theorem remains open and is tracked by Python counterexample
 searches. BT-0012 pivots to an elementary actual-prime wheel upper bound:
 sound prime-tuple enumerators are bounded by finite wheel survivor counts times
-the number of wheel blocks. This is still not analytic prime distribution.
+the number of wheel blocks. BT-0013 now proves the finite Gallagher resonance
+conservation law for arbitrary tuple length in the single-gate and two-gate
+coprime cases. The full arbitrary gate-list conservation theorem remains open,
+and none of these finite results prove analytic prime distribution.

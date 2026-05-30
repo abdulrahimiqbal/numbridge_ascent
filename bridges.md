@@ -229,3 +229,30 @@ is not a Selberg sieve theorem and does not prove any prime tuple asymptotic.
 Bridge Theorem:
 
 - `BT-0012`: prime wheel upper bound.
+
+## B-0013: Finite Gallagher resonance conservation
+
+Symbolic form: resonance averages to neutral across the finite wheel.
+
+Mathematical form: for one gate `p`, the total avoided-residue mass over all
+length-`k` residue tuples modulo `p` is:
+
+```text
+p * (p - 1)^k
+```
+
+For two positive coprime gates `p,q`, the total product of local avoided counts
+over all length-`k` residue tuples modulo `p*q` is:
+
+```text
+p*q * (p - 1)^k * (q - 1)^k
+```
+
+Status: PROVED_IN_LEAN for arbitrary `k` in the single-gate and two-gate
+cases. Python verifies the corresponding finite identity for arbitrary tested
+pairwise-coprime gate lists. The full arbitrary gate-list Lean theorem remains
+open and should be attacked by residue-choice CRT induction.
+
+Bridge Theorem:
+
+- `BT-0013`: finite Gallagher resonance conservation.

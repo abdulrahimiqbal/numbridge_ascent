@@ -275,3 +275,23 @@ Methodological update: the project has crossed from finite candidate residues
 to an elementary actual-prime count bound. This is still not analytic sieve
 theory; the next serious theorem must be a Selberg-sieve-style upper bound or
 another explicit prime-distribution estimate.
+
+## 2026-05-30: BT-0013 finite Gallagher partial theorem landed
+
+The next theorem did not become another finite optimizer. Lean now proves an
+arbitrary-`k` finite Gallagher conservation law for one gate and for two
+positive coprime gates:
+
+```text
+NumBridge.bt0013_two_gate_finite_gallagher_resonance_conservation
+```
+
+For coprime `p,q`, summing
+`LocalGateSurvivorCount p H * LocalGateSurvivorCount q H` over all length-`k`
+tuples modulo `p*q` gives exactly
+`p*q * (p - 1)^k * (q - 1)^k`.
+
+Methodological update: the resonance branch has reached finite singular-series
+mass conservation, but only partially in Lean. The full arbitrary gate-list
+theorem remains the next formalization target; do not call BT-0013 a
+Hardy-Littlewood or Gallagher asymptotic theorem.

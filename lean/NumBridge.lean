@@ -13,4 +13,5 @@ import NumBridge.SubcriticalResonance
 import NumBridge.FirstSubcriticalSacrifice
 import NumBridge.GeneralFirstSubcriticalSacrifice
 import NumBridge.PrimeWheelUpperBound
+import NumBridge.FiniteGallagher
 import NumBridge.NumerologyBranches

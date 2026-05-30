@@ -86,3 +86,14 @@ OPEN for the full arbitrary finite base-spine sacrifice theorem
 HEURISTIC for singular-series ranking beyond finite wheel counts
 NOT_PROVEN for Selberg-sieve or Hardy-Littlewood-type distribution claims
 ```
+
+For BT-0013, the correct status is:
+
+```text
+PROVED_IN_LEAN for arbitrary-k single-gate and two-gate finite Gallagher conservation
+COMPUTED_BY_PYTHON for arbitrary tested pairwise-coprime gate lists
+OPEN for the full arbitrary finite gate-list Lean theorem
+INTERNAL_NUMBRIDGE_BREAKTHROUGH, not a field novelty claim
+NOT_PROVEN for Gallagher's asymptotic theorem, Hardy-Littlewood, twin primes,
+or actual prime-distribution consequences
+```

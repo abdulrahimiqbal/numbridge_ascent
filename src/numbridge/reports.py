@@ -112,13 +112,19 @@ def build_lean_bridge_report(paths: RepoPaths) -> str:
         "BT-0012 proves that sound actual-prime tuple enumerators are bounded by WheelSurvivorCountGeneral gates H * (N / gateProduct gates + 1).",
         "```",
         "",
+        "Closed finite Gallagher partial theorem:",
+        "",
+        "```text",
+        "BT-0013 proves arbitrary-k single-gate and two-gate finite resonance conservation; the arbitrary gate-list Lean theorem remains open.",
+        "```",
+        "",
         "Next non-calibration theorem target:",
         "",
         "```text",
-        "BT-0013: formulate a Selberg-sieve upper-bound bridge with explicit local obstruction constants, while keeping the arbitrary base-spine theorem open.",
+        "BT-0013-full: prove the arbitrary positive pairwise-coprime gate-list finite Gallagher conservation theorem by residue-choice CRT induction.",
         "```",
         "",
-        "The prime digital-root theorem is shallow-real; BT-0006, BT-0008, BT-0009, BT-0010, and BT-0011 are finite-sieve / combinatorics results. BT-0012 is an elementary actual-prime count bound, not an analytic prime-distribution theorem.",
+        "The prime digital-root theorem is shallow-real; BT-0006, BT-0008, BT-0009, BT-0010, BT-0011, and BT-0013 are finite-sieve / combinatorics results. BT-0012 is an elementary actual-prime count bound, not an analytic prime-distribution theorem.",
     ])
     return "\n".join(lines) + "\n"
 

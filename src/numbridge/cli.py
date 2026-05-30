@@ -571,6 +571,57 @@ def cmd_bt0012_breakthrough_audit(args: argparse.Namespace) -> int:
     return 0 if result["part_b_sample_holds"] else 1
 
 
+def cmd_finite_gallagher(args: argparse.Namespace) -> int:
+    from bridge.finite_gallagher import verify_finite_gallagher
+
+    try:
+        result = verify_finite_gallagher(args.gates, args.k)
+    except ValueError as exc:
+        print(f"Rejected: {exc}", file=sys.stderr)
+        return 2
+    print("# BT-0013 Finite Gallagher Check")
+    print(f"gates={result['gates']} k={result['k']} W={result['W']}")
+    print(f"tuple_count={result['tuple_count']} exact_bruteforce={result['exact_bruteforce']}")
+    print(f"lhs={result['lhs']}")
+    print(f"rhs={result['rhs']}")
+    print(f"classification={result['classification']}")
+    print(f"lean_status={result['lean_status']}")
+    print(f"holds={result['holds']}")
+    return 0 if result["holds"] else 1
+
+
+def cmd_finite_gallagher_scan(args: argparse.Namespace) -> int:
+    from bridge.finite_gallagher import scan_finite_gallagher
+
+    try:
+        result = scan_finite_gallagher(args.max_gate, args.max_k, args.max_gate_len)
+    except ValueError as exc:
+        print(f"Rejected: {exc}", file=sys.stderr)
+        return 2
+    print("# BT-0013 Finite Gallagher Scan")
+    for key, value in result.items():
+        print(f"{key}={value}")
+    return 0 if result["holds"] else 1
+
+
+def cmd_finite_gallagher_counterexample_search(args: argparse.Namespace) -> int:
+    from bridge.finite_gallagher import search_counterexample_finite_gallagher
+
+    try:
+        result = search_counterexample_finite_gallagher(
+            args.max_gate,
+            args.max_k,
+            args.max_gate_len,
+        )
+    except ValueError as exc:
+        print(f"Rejected: {exc}", file=sys.stderr)
+        return 2
+    print("# BT-0013 Finite Gallagher Counterexample Search")
+    for key, value in result.items():
+        print(f"{key}={value}")
+    return 0 if result["coprime_counterexample"] is None else 1
+
+
 def cmd_branch_truth_report(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = paths.root / "numerology-branches.md"
@@ -696,7 +747,7 @@ def cmd_seek_lean_bridge(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = write_lean_bridge_report(paths)
     print(f"Wrote {path.relative_to(paths.root)}")
-    print("Top recommendation: formulate BT-0013, a Selberg-sieve-style upper-bound bridge with explicit local obstruction constants.")
+    print("Top recommendation: close BT-0013-full, the arbitrary gate-list finite Gallagher conservation theorem.")
     return 0
 
 
@@ -877,6 +928,26 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("bt0012-breakthrough-audit", help="Print BT-0012 breakthrough/pivot audit")
     p.set_defaults(func=cmd_bt0012_breakthrough_audit)
+
+    p = sub.add_parser("finite-gallagher", help="Verify the BT-0013 finite Gallagher identity")
+    p.add_argument("gates", type=_parse_gates)
+    p.add_argument("k", type=_parse_named_int("k"))
+    p.set_defaults(func=cmd_finite_gallagher)
+
+    p = sub.add_parser("finite-gallagher-scan", help="Scan finite Gallagher checks")
+    p.add_argument("--max-gate", type=int, required=True)
+    p.add_argument("--max-k", type=int, required=True)
+    p.add_argument("--max-gate-len", type=int, default=3)
+    p.set_defaults(func=cmd_finite_gallagher_scan)
+
+    p = sub.add_parser(
+        "finite-gallagher-counterexample-search",
+        help="Search finite Gallagher counterexamples inside and outside assumptions",
+    )
+    p.add_argument("--max-gate", type=int, required=True)
+    p.add_argument("--max-k", type=int, required=True)
+    p.add_argument("--max-gate-len", type=int, default=3)
+    p.set_defaults(func=cmd_finite_gallagher_counterexample_search)
 
     p = sub.add_parser("branch-truth-report", help="Print numerology branch truth taxonomy")
     p.set_defaults(func=cmd_branch_truth_report)

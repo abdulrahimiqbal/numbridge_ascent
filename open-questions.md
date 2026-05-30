@@ -13,3 +13,7 @@
    higher-cardinality first-subcritical windows?
 9. Can the elementary BT-0012 wheel upper bound be upgraded to a Selberg-sieve
    upper bound with explicit local obstruction constants?
+10. Can the BT-0013 single/two-gate finite Gallagher conservation theorem be
+    lifted to arbitrary positive pairwise-coprime gate lists in Lean?
+11. What analytic input would connect finite Gallagher conservation to an
+    actual averaged singular-series theorem over growing intervals?

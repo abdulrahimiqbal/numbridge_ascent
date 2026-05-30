@@ -96,6 +96,12 @@ resonance through prime gates is exactly finite-sieve residue survival under
 the wheel-shadow interpretation. BT-0007 is the next target: optimize finite
 resonance scores over constrained admissible patterns.
 
+BT-0013 adds the first finite Gallagher conservation layer. Under the
+finite-wheel interpretation, resonance is not merely rankable; in the
+single-gate and two-gate coprime cases its total mass over all residue tuples is
+exactly conserved. This remains finite sieve theory, not an asymptotic theorem
+about primes.
+
 ## Not Proven
 
 The following are explicitly `NOT_PROVEN`:

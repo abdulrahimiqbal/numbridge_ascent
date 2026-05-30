@@ -22,6 +22,7 @@ structure behind a symbolic phrase.
 | BT-0010 | First subcritical sacrifice theorem | first subcritical zone, one gate sacrifice | for `[2,3,q]`, best first-subcritical patterns keep the 6-lattice and occupy exactly two q-residues | parametric upper bound and equality iff proved | finite-sieve parametric structural theorem |
 | BT-0011 | General first-subcritical sacrifice theorem | base-spine resonance, one gate sacrifice | for arbitrary two-gate base spines `[a,b]`, best first-subcritical patterns lock `a*b` and occupy exactly two q-residues | two-gate fallback theorem proved; arbitrary finite base spine open | finite-sieve two-gate structural theorem |
 | BT-0012 | Prime wheel upper bound | actual prime tuples must survive finite gates | prime tuple translates above gates land in wheel-survivor residues and satisfy a wheel-block count bound | elementary actual-prime wheel theorem proved | actual-prime bridge elementary |
+| BT-0013 | Finite Gallagher resonance conservation | resonance averages to neutral across the finite wheel | finite singular-series numerators conserve total mass when averaged over residue tuples | single-gate and two-gate arbitrary-`k` theorems proved; arbitrary gate-list theorem open | internal NumBridge breakthrough |
 
 ## Current Lean Surface
 
@@ -93,6 +94,13 @@ NumBridge.prime_translate_avoids_each_gate_residue
 NumBridge.prime_tuple_translate_implies_wheel_survivor
 NumBridge.predicate_count_le_wheel_survivor_blocks
 NumBridge.bt0012_prime_tuple_wheel_upper_bound
+NumBridge.tuples_length_count
+NumBridge.tuples_all_count
+NumBridge.single_gate_avoided_residue_sum
+NumBridge.single_gate_local_survivor_sum
+NumBridge.two_gate_finite_gallagher_conservation
+NumBridge.two_gate_finite_gallagher_conservation_local
+NumBridge.bt0013_two_gate_finite_gallagher_resonance_conservation
 ```
 
 ## Honest Status

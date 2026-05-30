@@ -167,3 +167,19 @@ WheelSurvivorCountGeneral gates H * (N / gateProduct gates + 1)
 This is elementary but important: it connects the finite wheel layer to actual
 prime tuples. It is not yet Selberg sieve, Bombieri-Vinogradov, Maynard-Tao,
 or Hardy-Littlewood.
+
+## Finite Gallagher Layer
+
+BT-0013 does not count actual primes. It proves finite singular-series mass
+conservation for arbitrary tuple length in the single-gate and two-gate
+coprime cases:
+
+```text
+sum_{H mod pq} LocalGateSurvivorCount p H * LocalGateSurvivorCount q H
+  = p*q * (p - 1)^k * (q - 1)^k
+```
+
+This explains why normalized finite resonance has average value one in the
+finite wheel model. It is a bridge toward the Gallagher context, not a proof of
+Gallagher's asymptotic theorem or any Hardy-Littlewood prime-distribution
+claim.

@@ -424,7 +424,51 @@ Next proof step: formulate a genuine analytic sieve target, such as a
 Selberg-sieve upper bound for prime tuple translates using local obstruction
 data. Do not claim Hardy-Littlewood or a prime tuple asymptotic.
 
-## PR-0013: Two-offset residue-shadow count
+## PR-0013: Finite Gallagher resonance conservation
+
+Goal: prove the exact finite-wheel analogue of Gallagher-style singular-series
+averaging.
+
+Status: partial theorem proved in Lean, not the full arbitrary gate-list target.
+
+Lean path:
+
+```text
+lean/NumBridge/FiniteGallagher.lean
+```
+
+Closed theorem names:
+
+```text
+NumBridge.single_gate_local_survivor_sum
+NumBridge.two_gate_finite_gallagher_conservation_local
+NumBridge.bt0013_two_gate_finite_gallagher_resonance_conservation
+```
+
+Lean-proved theorem:
+
+```text
+For 0 < p, 0 < q, Nat.Coprime p q, and arbitrary k:
+
+sum_{H in (Z / pqZ)^k}
+  LocalGateSurvivorCount p H * LocalGateSurvivorCount q H
+= p*q * (p - 1)^k * (q - 1)^k
+```
+
+Python computes the arbitrary finite gate-list identity for tested
+pairwise-coprime lists, including `[2,3,5]` and `[2,5,7]`. The full arbitrary
+gate-list Lean theorem remains open:
+
+```text
+sum_H FiniteResonanceNumerator gates H
+  = gateProduct gates * product_{p in gates} (p - 1)^k
+```
+
+Next proof step: formalize residue-choice lists for arbitrary gates and prove
+the CRT/product induction that counts entries avoiding one chosen residue at
+each gate.
+
+## PR-0014: Two-offset residue-shadow count
 
 Goal: remove remaining local counting friction.
 

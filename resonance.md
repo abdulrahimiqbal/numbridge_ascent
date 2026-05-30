@@ -186,3 +186,24 @@ WheelSurvivorCountGeneral gates H * (N / W + 1)
 This is deliberately elementary. It converts finite wheel survival into an
 actual-prime obstruction/count bound, but it does not estimate primes inside
 the surviving residues.
+
+## Finite Gallagher Conservation
+
+BT-0013 turns resonance from maximization into mass conservation. Lean proves
+the arbitrary-`k` single-gate identity:
+
+```text
+sum_H LocalGateSurvivorCount p H = p * (p - 1)^k
+```
+
+and the arbitrary-`k` two-gate coprime identity:
+
+```text
+sum_H LocalGateSurvivorCount p H * LocalGateSurvivorCount q H
+  = p*q * (p - 1)^k * (q - 1)^k
+```
+
+where `H` ranges over length-`k` residue tuples modulo `p` or `p*q`
+respectively. This is the finite-wheel analogue of singular-series averaging,
+but only the one- and two-gate Lean theorem is closed. The arbitrary gate-list
+conservation theorem remains open.
