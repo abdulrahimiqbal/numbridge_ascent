@@ -120,6 +120,19 @@ def _parse_gates(raw: str) -> list[int]:
     return gates
 
 
+def _parse_named_int(name: str):
+    def parse(raw: str) -> int:
+        value = raw
+        if raw.startswith(f"{name}="):
+            value = raw.split("=", 1)[1]
+        try:
+            return int(value)
+        except ValueError as exc:
+            raise argparse.ArgumentTypeError(f"invalid {name} value {raw!r}") from exc
+
+    return parse
+
+
 def _format_pattern(pattern: list[int]) -> str:
     return "[" + ",".join(str(h) for h in pattern) + "]"
 
@@ -298,6 +311,56 @@ def cmd_wheel_product_counterexample_search(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_resonance_lattice_max(args: argparse.Namespace) -> int:
+    from bridge.resonance_lattice_maximizer import brute_force_verify_bt0008
+
+    result = brute_force_verify_bt0008(args.k, args.D, args.gates)
+    print(f"BT-0008 resonance lattice check: k={args.k} D={args.D} gates={result['gates']}")
+    print(f"W={result['W']} upper_bound={result['upper_bound']}")
+    print(f"threshold_attainable={result['threshold_attainable']}")
+    print(f"canonical={_format_pattern(list(result['canonical_pattern']))}")
+    print(f"canonical_valid={result['canonical_valid']} canonical_score={result['canonical_score']}")
+    print(f"max_score={result['max_score']} maximizer_count={result['maximizer_count']}")
+    print(f"upper_attainer_count={result['upper_attainer_count']}")
+    for pattern in list(result["maximizers"])[:20]:
+        print(f"- maximizer {_format_pattern(list(pattern))}")
+    if result["maximizer_count"] > 20:
+        print(f"... {result['maximizer_count'] - 20} more")
+    print(f"holds={result['holds']}")
+    return 0 if result["holds"] else 1
+
+
+def cmd_verify_bt0008(args: argparse.Namespace) -> int:
+    from bridge.resonance_lattice_maximizer import verify_bt0008
+
+    result = verify_bt0008(args.max_k, args.max_D, args.gates)
+    print(f"BT-0008 verifier: gates={result['gates']} max_k={args.max_k} max_D={args.max_D}")
+    print(f"checked={result['checked']} holds={result['holds']}")
+    if result["failures"]:
+        print("Failures:")
+        for failure in result["failures"][:10]:
+            print(f"- k={failure['k']} D={failure['D']} max_score={failure['max_score']} upper={failure['upper_bound']}")
+        if len(result["failures"]) > 10:
+            print(f"... {len(result['failures']) - 10} more")
+    return 0 if result["holds"] else 1
+
+
+def cmd_subcritical_resonance_search(args: argparse.Namespace) -> int:
+    from bridge.resonance_lattice_maximizer import search_subcritical_maximizers
+
+    result = search_subcritical_maximizers(args.k, args.D, args.gates)
+    print(f"BT-0008 subcritical resonance search: k={args.k} D={args.D} gates={result['gates']}")
+    print(f"W={result['W']} upper_bound={result['upper_bound']}")
+    print(f"threshold_attainable={result['threshold_attainable']} note={result['note']}")
+    print(f"max_score={result['max_score']} maximizer_count={result['maximizer_count']}")
+    for pattern in list(result["maximizers"])[:25]:
+        print(f"- {_format_pattern(list(pattern))}")
+    if result["maximizer_count"] > 25:
+        print(f"... {result['maximizer_count'] - 25} more")
+    print(f"upper_attainer_count={result['upper_attainer_count']}")
+    return 0 if result["holds"] else 1
+
+
 def cmd_branch_truth_report(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = paths.root / "numerology-branches.md"
@@ -423,7 +486,7 @@ def cmd_seek_lean_bridge(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = write_lean_bridge_report(paths)
     print(f"Wrote {path.relative_to(paths.root)}")
-    print("Top recommendation: use the closed BT-0007 all-k,D,P classifier to hunt closed-form maximizer families.")
+    print("Top recommendation: use BT-0008 to attack the subcritical BT-0009 maximizer theorem.")
     return 0
 
 
@@ -538,6 +601,24 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--max-offset", type=int, required=True)
     p.add_argument("--max-len", type=int, default=3)
     p.set_defaults(func=cmd_wheel_product_counterexample_search)
+
+    p = sub.add_parser("resonance-lattice-max", help="Check the BT-0008 resonance lattice maximizer structure")
+    p.add_argument("k", type=_parse_named_int("k"))
+    p.add_argument("D", type=_parse_named_int("D"))
+    p.add_argument("gates", type=_parse_gates)
+    p.set_defaults(func=cmd_resonance_lattice_max)
+
+    p = sub.add_parser("verify-bt0008", help="Brute-force verify BT-0008 over a bounded window")
+    p.add_argument("--max-k", type=int, required=True)
+    p.add_argument("--max-D", type=int, required=True)
+    p.add_argument("--gates", type=_parse_gates, required=True)
+    p.set_defaults(func=cmd_verify_bt0008)
+
+    p = sub.add_parser("subcritical-resonance-search", help="Search subcritical BT-0008 maximizers")
+    p.add_argument("k", type=_parse_named_int("k"))
+    p.add_argument("D", type=_parse_named_int("D"))
+    p.add_argument("gates", type=_parse_gates)
+    p.set_defaults(func=cmd_subcritical_resonance_search)
 
     p = sub.add_parser("branch-truth-report", help="Print numerology branch truth taxonomy")
     p.set_defaults(func=cmd_branch_truth_report)

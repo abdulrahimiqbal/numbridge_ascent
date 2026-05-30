@@ -8,4 +8,5 @@ import NumBridge.WheelShadow
 import NumBridge.WheelProduct
 import NumBridge.WheelProductGeneral
 import NumBridge.ResonanceOptimization
+import NumBridge.ResonanceLatticeMaximizer
 import NumBridge.NumerologyBranches

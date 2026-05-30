@@ -217,3 +217,53 @@ NumBridge.bt0007_all_k_D_P_finite_resonance_classification
 Next proof step: move from exhaustive classifier theorems to closed-form
 structural descriptions of the maximizing families for interesting parameter
 families.
+
+## PR-0008: Resonance lattice maximizer
+
+Goal: prove a closed-form structural maximizer theorem for the absolute finite
+resonance numerator.
+
+Lean path:
+
+```text
+lean/NumBridge/ResonanceLatticeMaximizer.lean
+```
+
+Status: core structural theorem proved in Lean; full reverse threshold remains
+open.
+
+Closed theorem names:
+
+```text
+NumBridge.nonempty_shadow_count_ge_one
+NumBridge.local_survivor_count_le_p_minus_one
+NumBridge.finite_resonance_numerator_le_upper_bound
+NumBridge.local_survivor_count_eq_p_minus_one_iff_all_mod_zero
+NumBridge.equality_upper_bound_implies_single_shadow_each_gate
+NumBridge.same_residue_as_zero_all_gates_iff_dvd_gateProduct
+NumBridge.resonance_upper_bound_eq_iff_offsets_dvd_gateProduct
+NumBridge.bt0008_resonance_lattice_maximizer_theorem
+NumBridge.canonical_lattice_pattern_valid_if_D_ge
+NumBridge.canonical_lattice_pattern_attains_upper_bound
+NumBridge.bt0008_attainability_threshold_sufficient
+NumBridge.bt0008_maximizer_family_characterization
+```
+
+Roadmap target: prove the finite order/pigeonhole lemma that `k` distinct
+multiples of positive `W`, containing zero and bounded by `D`, force
+`D >= (k - 1)W`. That would close the full iff threshold and floor-family
+statement for BT-0008.
+
+## PR-0009: Subcritical resonance maximizers
+
+Goal: classify best finite resonance patterns below the lattice threshold
+`D < (k - 1)W`.
+
+First target:
+
+```text
+gates = [2,3,5], W = 30, k = 3, D = 59
+```
+
+Python finds max score `6` and twelve maximizers. The Lean target is a
+non-exhaustive structural explanation of why those are best.

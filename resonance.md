@@ -78,3 +78,26 @@ The broad BT-0007 classifier is also proved in Lean: for every `k`, `D`, and
 `P`, the generated maximizer list is exactly the set of bounded canonical
 patterns with globally maximal finite resonance numerator in that finite search
 space.
+
+## Resonance Lattice Maximizers
+
+BT-0008 proves the first closed-form structural theorem for the absolute
+finite resonance numerator. For pairwise-coprime gates greater than one, a
+zero-anchored pattern satisfies:
+
+```text
+ProductLocalGateSurvivorCount gates H <= prod_{p in gates} (p - 1)
+```
+
+and equality holds exactly when every offset is divisible by:
+
+```text
+W = gateProduct gates
+```
+
+So the strongest possible finite resonance locks onto the gate-product lattice.
+
+Lean also proves that `[0,W,2W,...,(k-1)W]` is normalized, distinct, bounded by
+`D`, and upper-bound-attaining whenever `(k - 1)W <= D`. Python checks the full
+threshold behavior in bounded windows and searches subcritical cases. The full
+reverse threshold/floor-family proof remains open Lean work.

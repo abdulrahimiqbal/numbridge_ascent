@@ -11,6 +11,7 @@ This file indexes live and historical leads. Individual lead cards live in `lead
 | L-0005 | Prime constellation gates | theorem-proved | total residue coverage obstructs prime patterns |
 | L-0006 | Prime-pattern resonance | search-engine-built | residue shadows and local factors rank admissible patterns |
 | L-0007 | Finite resonance optimization | theorem-proved | broad all-k,D,P exhaustive finite classifier theorem |
+| L-0008 | Resonance lattice maximizer | theorem-proved-partial-threshold-open | absolute finite resonance maximizers lie on the gate-product lattice |
 
 ## How to add a lead
 

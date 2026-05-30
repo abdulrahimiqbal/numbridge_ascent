@@ -178,3 +178,26 @@ Methodological update: this is a genuine broad finite classification, but it is
 algorithmic/exhaustive rather than a closed-form structural theorem. The next
 mathematical leap is to identify and prove human-readable structure in those
 maximizer families.
+
+## 2026-05-30: BT-0008 structural resonance maximizer closed
+
+Lean now proves the first closed-form structural theorem after the BT-0007
+classifier:
+
+```text
+NumBridge.bt0008_resonance_lattice_maximizer_theorem
+NumBridge.resonance_upper_bound_eq_iff_offsets_dvd_gateProduct
+NumBridge.bt0008_maximizer_family_characterization
+```
+
+For pairwise-coprime gates greater than one, a zero-started pattern reaches the
+absolute finite resonance numerator upper bound `prod (p - 1)` if and only if
+every offset is divisible by the full gate product. The canonical lattice
+pattern `[0,W,2W,...,(k-1)W]` is proved valid and upper-bound-attaining when
+`(k - 1)W <= D`.
+
+Methodological update: BT-0008 is not another generated classifier. It is a
+human-readable structural maximizer theorem for the absolute finite-sieve
+upper bound. The exact reverse threshold/floor-family statement remains a
+finite order/pigeonhole Lean target, and subcritical maximizers become the next
+new theorem-hunting zone.

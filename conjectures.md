@@ -9,5 +9,6 @@
 | C-0005 | Residue-shadow resonance ranks prime patterns | engine-built | concrete-lean-facts-proved |
 | C-0006 | Wheel-shadow distribution | theorem-proved | arbitrary-gate-list-finite-sieve-theorem-proved |
 | C-0007 | Finite resonance optimization | theorem-proved | all-k-D-P-finite-classifier-proved |
+| C-0008 | Resonance lattice maximizer | proved-in-lean-core-python-checked-threshold | upper-bound-and-lattice-equality-proved |
 
 Conjectures must have a precise statement, source lead, experiment evidence, counterexample status, and Lean path.

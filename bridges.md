@@ -112,3 +112,27 @@ finite combinatorics.
 Bridge Theorem:
 
 - `BT-0007`: finite resonance optimization theorem.
+
+## B-0008: Resonance lattice maximizer
+
+Symbolic form: strongest resonance locks onto the gate-product lattice.
+
+Mathematical form: for pairwise-coprime gates greater than one, the finite
+resonance numerator of a zero-anchored pattern is bounded by:
+
+```text
+prod_{p in gates} (p - 1)
+```
+
+and equality occurs exactly when every offset is divisible by the full gate
+product `W`.
+
+Status: structural finite-sieve maximizer theorem proved in Lean for the
+upper-bound and equality lattice characterization. Lean also proves the
+canonical pattern `[0,W,2W,...,(k-1)W]` is valid and upper-bound-attaining when
+`(k - 1)W <= D`. The reverse threshold and exact floor-family characterization
+remain open Lean work, with bounded Python verification.
+
+Bridge Theorem:
+
+- `BT-0008`: resonance lattice maximizer theorem.

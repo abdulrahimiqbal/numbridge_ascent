@@ -35,3 +35,13 @@ finite-sieve / CRT / wheel-shadow distribution
 pre-analytic finite model
 formally true under finite-sieve interpretation
 ```
+
+For BT-0008, the correct status is:
+
+```text
+PROVED_IN_LEAN
+finite-sieve / finite-combinatorics / structural resonance maximizer
+absolute upper-bound equality iff gate-product lattice alignment
+reverse threshold/floor-family theorem still OPEN in Lean
+actual prime-distribution consequences NOT_PROVEN
+```

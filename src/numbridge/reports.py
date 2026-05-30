@@ -82,13 +82,19 @@ def build_lean_bridge_report(paths: RepoPaths) -> str:
         "bt0006_squarefree_wheel_shadow_distribution proves the finite-wheel product theorem for arbitrary finite positive pairwise-coprime gate lists.",
         "```",
         "",
+        "Closed structural maximizer theorem:",
+        "",
+        "```text",
+        "BT-0008 proves that absolute finite resonance maximizers are exactly gate-product lattice patterns.",
+        "```",
+        "",
         "Next non-calibration theorem target:",
         "",
         "```text",
-        "BT-0007: use the closed all-k,D,P finite classifier to search for closed-form maximizer families.",
+        "BT-0009: classify subcritical maximizers when D < (k - 1) * gateProduct gates.",
         "```",
         "",
-        "The prime digital-root theorem is shallow-real; BT-0006 is finite-sieve / CRT and proved in Lean because it gives exact distribution for wheel candidates, not actual primes.",
+        "The prime digital-root theorem is shallow-real; BT-0006 and BT-0008 are finite-sieve / combinatorics results, not actual prime-distribution theorems.",
     ])
     return "\n".join(lines) + "\n"
 

@@ -31,6 +31,7 @@ src/bridge/residue_shadow.py
 src/bridge/resonance.py
 src/bridge/search_prime_patterns.py
 src/bridge/wheel_product_general.py
+src/bridge/resonance_lattice_maximizer.py
 ```
 
 CLI examples:
@@ -43,6 +44,8 @@ python3 bridge.py rank-resonance --k 4 --diameter 50 --prime-bound 31
 python3 bridge.py primebridge-report --k 3 --diameter 30 --N 100000
 python3 bridge.py wheel-product-general H=0,2,6 gates=2,3,5
 python3 bridge.py wheel-product-counterexample-search --max-gate 12 --max-offset 20
+python3 bridge.py resonance-lattice-max k=3 D=60 gates=2,3,5
+python3 bridge.py verify-bt0008 --max-k 4 --max-D 80 --gates 2,3,5
 ```
 
 ## Honest Boundary
@@ -93,3 +96,19 @@ NumBridge.bt0007_all_k_D_P_finite_resonance_classification
 This proves both the two-point bounded optimization case and the broad
 all-`k,D,P` exhaustive finite classifier. It is finite combinatorics, not prime
 distribution.
+
+## Structural Maximizer Layer
+
+BT-0008 upgrades the classifier layer into a structural theorem for the
+absolute finite resonance upper bound. Lean proves:
+
+```text
+ProductLocalGateSurvivorCount gates H = prod_{p in gates} (p - 1)
+iff
+every h in H is divisible by gateProduct gates.
+```
+
+This formalizes the symbolic phrase "strongest resonance locks onto the
+gate-product lattice." It remains finite-sieve combinatorics. The next target
+is subcritical resonance: classify the best patterns when the diameter bound is
+too small to fit `[0,W,2W,...,(k-1)W]`.

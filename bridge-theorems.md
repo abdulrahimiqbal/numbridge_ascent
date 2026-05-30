@@ -17,6 +17,7 @@ structure behind a symbolic phrase.
 | BT-0005 | Residue shadow resonance | gate, shadow, resonance, survival | residue shadows and local survival factors rank prime-pattern candidates | engine plus concrete Lean facts proved | prime-structural / search-enabling |
 | BT-0006 | Wheel-shadow distribution theorem | resonance through prime gates | exact finite-wheel survivor counts factor into local survival counts | full arbitrary positive pairwise-coprime gate-list theorem proved | foundational / finite-sieve / proved-in-Lean |
 | BT-0007 | Finite resonance optimization theorem | strongest resonance, surviving patterns, best prime shapes | exact finite argmax classification over bounded `k,D,P` search spaces | broad all-`k,D,P` finite classifier proved | finite combinatorics / proved-in-Lean |
+| BT-0008 | Resonance lattice maximizer theorem | strongest resonance, gate-product alignment, lattice lock | absolute finite-resonance maximizers lie on the gate-product lattice | upper bound and equality characterization proved; reverse threshold open | finite-sieve structural maximizer |
 
 ## Current Lean Surface
 
@@ -64,6 +65,15 @@ NumBridge.two_point_gateProduct_attains_resonance_max
 NumBridge.bt0007_two_point_bounded_finite_resonance_optimization
 NumBridge.finite_resonance_maximizers_classify
 NumBridge.bt0007_all_k_D_P_finite_resonance_classification
+NumBridge.finite_resonance_numerator_le_upper_bound
+NumBridge.equality_upper_bound_implies_single_shadow_each_gate
+NumBridge.same_residue_as_zero_all_gates_iff_dvd_gateProduct
+NumBridge.resonance_upper_bound_eq_iff_offsets_dvd_gateProduct
+NumBridge.bt0008_resonance_lattice_maximizer_theorem
+NumBridge.canonical_lattice_pattern_valid_if_D_ge
+NumBridge.canonical_lattice_pattern_attains_upper_bound
+NumBridge.bt0008_attainability_threshold_sufficient
+NumBridge.bt0008_maximizer_family_characterization
 ```
 
 ## Honest Status
@@ -108,3 +118,12 @@ classifier membership is equivalent to being a bounded candidate whose score is
 globally maximal inside the finite search space. This is broad finite
 classification, not a closed-form structural description of all maximizing
 families and not an analytic prime-distribution claim.
+
+BT-0008 closes the first structural maximizer theorem after BT-0007. Lean proves
+that for zero-started patterns and pairwise-coprime gates greater than one, the
+finite resonance numerator is bounded by `prod (p - 1)`, and equality occurs
+if and only if every offset is divisible by `gateProduct gates`. Lean also
+proves that the canonical lattice pattern `[0,W,2W,...,(k-1)W]` is a valid
+normalized distinct upper-bound attainer whenever `(k - 1)W <= D`. The reverse
+threshold/floor-family theorem remains open Lean work and is currently only
+bounded-checked by Python.
