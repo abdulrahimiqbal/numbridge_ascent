@@ -136,3 +136,50 @@ remain open Lean work, with bounded Python verification.
 Bridge Theorem:
 
 - `BT-0008`: resonance lattice maximizer theorem.
+
+## B-0009: Subcritical resonance
+
+Symbolic form: when the full lattice cannot fit, the strongest subcritical
+patterns keep the strongest gate locks and sacrifice one gate minimally.
+
+Mathematical form: for normalized distinct three-point patterns bounded by
+`59` and gates `[2,3,5]`,
+
+```text
+FiniteResonanceNumerator [2,3,5] H <= 6
+```
+
+with equality exactly when every offset is divisible by `6` and
+`LocalResidueShadowCount 5 H = 2`.
+
+Status: PROVED_IN_LEAN / finite-sieve subcritical structural theorem. Python
+confirms the structural condition picks out the twelve bounded maximizers, but
+the Lean theorem does not hardcode the list.
+
+Bridge Theorem:
+
+- `BT-0009`: subcritical resonance theorem.
+
+## B-0010: First subcritical sacrifice
+
+Symbolic form: in the first subcritical zone, strongest resonance keeps the
+smallest gate locks and sacrifices only the next gate.
+
+Mathematical form: for `q >= 5`, `Nat.Coprime q 6`, normalized distinct
+three-point patterns bounded by `12q - 1`, and gates `[2,3,q]`,
+
+```text
+FiniteResonanceNumerator [2,3,q] H <= 2 * (q - 2)
+```
+
+with equality exactly when every offset is divisible by `6` and
+`LocalResidueShadowCount q H = 2`.
+
+Status: PROVED_IN_LEAN for the parametric upper bound and equality
+characterization. The canonical `[0,6,6q]` attainer is verified by Python in
+the requested q scans, while the direct Lean q-shadow count for that concrete
+pattern remains a small isolated lemma.
+
+Bridge Theorem:
+
+- `BT-0010`: first subcritical sacrifice theorem.

@@ -10,5 +10,7 @@
 | C-0006 | Wheel-shadow distribution | theorem-proved | arbitrary-gate-list-finite-sieve-theorem-proved |
 | C-0007 | Finite resonance optimization | theorem-proved | all-k-D-P-finite-classifier-proved |
 | C-0008 | Resonance lattice maximizer | proved-in-lean-core-python-checked-threshold | upper-bound-and-lattice-equality-proved |
+| C-0009 | Subcritical resonance | proved-in-lean | subcritical-235-structural-theorem-proved |
+| C-0010 | First subcritical sacrifice | proved-in-lean | parametric-first-subcritical-sacrifice-proved |
 
 Conjectures must have a precise statement, source lead, experiment evidence, counterexample status, and Lean path.

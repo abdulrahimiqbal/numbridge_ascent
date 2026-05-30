@@ -361,6 +361,90 @@ def cmd_subcritical_resonance_search(args: argparse.Namespace) -> int:
     return 0 if result["holds"] else 1
 
 
+def cmd_subcritical_bt009(args: argparse.Namespace) -> int:
+    from bridge.subcritical_resonance import (
+        explain_bt0009_maximizers,
+        verify_bt0009_subcritical_235,
+    )
+
+    if args.verify:
+        result = verify_bt0009_subcritical_235()
+        print("BT-0009 subcritical 235 verifier")
+        print(f"gates={result['gates']} W={result['W']} k={result['k']} D={result['D']}")
+        print(f"checked_patterns={result['checked_patterns']}")
+        print(f"max_score={result['max_score']} expected={result['expected_max_score']}")
+        print(f"maximizer_count={len(result['maximizers'])}")
+        print(f"holds={result['holds']}")
+        if not result["holds"]:
+            print(f"over_bound={result['over_bound']}")
+            print(f"bad_maximizers={result['bad_maximizers']}")
+            print(f"missed_structural={result['missed_structural']}")
+        return 0 if result["holds"] else 1
+
+    explanation = explain_bt0009_maximizers()
+    print("BT-0009 subcritical 235 structural theorem")
+    print(f"gates={explanation['gates']} W={explanation['W']} k={explanation['k']} D={explanation['D']}")
+    print(f"max_score={explanation['max_score']} maximizer_count={explanation['maximizer_count']}")
+    print(explanation["structural_explanation"])
+    if args.explain:
+        print("Maximizers:")
+        for pattern in explanation["maximizers"]:
+            print(f"- {_format_pattern(list(pattern))}")
+    return 0
+
+
+def cmd_bt0010_first_subcritical(args: argparse.Namespace) -> int:
+    from bridge.first_subcritical_sacrifice import verify_first_subcritical_sacrifice
+
+    try:
+        result = verify_first_subcritical_sacrifice(args.q)
+    except ValueError as exc:
+        print(f"Rejected: {exc}", file=sys.stderr)
+        return 2
+    print("BT-0010 first subcritical sacrifice")
+    print(f"q={result['q']} gates={result['gates']} W={result['W']} D={result['D']}")
+    print(f"checked_patterns={result['checked_patterns']}")
+    print(f"predicted_max_score={result['predicted_max_score']} max_score={result['max_score']}")
+    print(f"canonical={_format_pattern(list(result['canonical_attainer']))} score={result['canonical_score']}")
+    print(f"maximizer_count={result['maximizer_count']} structural_count={result['structural_count']}")
+    print(f"holds={result['holds']}")
+    return 0 if result["holds"] else 1
+
+
+def cmd_bt0010_scan(args: argparse.Namespace) -> int:
+    from math import gcd
+
+    from bridge.first_subcritical_sacrifice import scan_first_subcritical_q_values
+
+    q_values = [q for q in range(5, args.q_max + 1) if gcd(q, 6) == 1]
+    result = scan_first_subcritical_q_values(q_values)
+    print(f"BT-0010 scan q<= {args.q_max}")
+    print(f"tested_q_values={q_values}")
+    print(f"checked={result['checked']} holds={result['holds']}")
+    for row in result["results"]:
+        print(
+            f"- q={row['q']}: max={row['max_score']} "
+            f"predicted={row['predicted_max_score']} "
+            f"maximizers={row['maximizer_count']} holds={row['holds']}"
+        )
+    return 0 if result["holds"] else 1
+
+
+def cmd_bt0010_counterexample_search(args: argparse.Namespace) -> int:
+    from bridge.first_subcritical_sacrifice import find_counterexample_bt0010
+
+    try:
+        result = find_counterexample_bt0010(args.q_max)
+    except ValueError as exc:
+        print(f"Rejected: {exc}", file=sys.stderr)
+        return 2
+    print(f"BT-0010 counterexample search q<= {args.q_max}")
+    print(f"tested_q_values={result['tested_q_values']}")
+    print(f"counterexample={result['counterexample']}")
+    print(f"holds={result['holds']}")
+    return 0 if result["holds"] else 1
+
+
 def cmd_branch_truth_report(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = paths.root / "numerology-branches.md"
@@ -486,7 +570,7 @@ def cmd_seek_lean_bridge(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = write_lean_bridge_report(paths)
     print(f"Wrote {path.relative_to(paths.root)}")
-    print("Top recommendation: use BT-0008 to attack the subcritical BT-0009 maximizer theorem.")
+    print("Top recommendation: close BT-0011, the reusable two-offset residue-shadow count lemma.")
     return 0
 
 
@@ -619,6 +703,23 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("D", type=_parse_named_int("D"))
     p.add_argument("gates", type=_parse_gates)
     p.set_defaults(func=cmd_subcritical_resonance_search)
+
+    p = sub.add_parser("subcritical-bt009", help="Run the BT-0009 subcritical 235 verifier")
+    p.add_argument("--explain", action="store_true", help="Print the structural explanation and maximizer list")
+    p.add_argument("--verify", action="store_true", help="Run the bounded BT-0009 verifier")
+    p.set_defaults(func=cmd_subcritical_bt009)
+
+    p = sub.add_parser("bt0010-first-subcritical", help="Verify BT-0010 for one q value")
+    p.add_argument("q", type=_parse_named_int("q"))
+    p.set_defaults(func=cmd_bt0010_first_subcritical)
+
+    p = sub.add_parser("bt0010-scan", help="Scan BT-0010 over q values up to q-max")
+    p.add_argument("--q-max", type=int, required=True)
+    p.set_defaults(func=cmd_bt0010_scan)
+
+    p = sub.add_parser("bt0010-counterexample-search", help="Search for BT-0010 counterexamples")
+    p.add_argument("--q-max", type=int, required=True)
+    p.set_defaults(func=cmd_bt0010_counterexample_search)
 
     p = sub.add_parser("branch-truth-report", help="Print numerology branch truth taxonomy")
     p.set_defaults(func=cmd_branch_truth_report)

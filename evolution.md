@@ -201,3 +201,38 @@ human-readable structural maximizer theorem for the absolute finite-sieve
 upper bound. The exact reverse threshold/floor-family statement remains a
 finite order/pigeonhole Lean target, and subcritical maximizers become the next
 new theorem-hunting zone.
+
+## 2026-05-30: BT-0009 subcritical resonance theorem closed
+
+The first subcritical resonance case did not collapse into a hardcoded list.
+Lean now proves:
+
+```text
+NumBridge.bt0009_subcritical_235_k3_D59_structural_breakthrough
+```
+
+For normalized distinct three-point patterns bounded by `59`, with gates
+`[2,3,5]`, the finite resonance numerator is at most `6`. Equality holds
+exactly when all offsets are divisible by `6` and the pattern occupies exactly
+two residue classes modulo `5`.
+
+Methodological update: subcritical resonance has real theorem content. The
+right next step is not more enumeration, but a one-gate-sacrifice schema such
+as `[2,3,q]` with `D = 2*(6q)-1`.
+
+## 2026-05-30: BT-0010 first subcritical sacrifice theorem closed
+
+BT-0009 now generalizes from `[2,3,5]` to `[2,3,q]`. Lean proves:
+
+```text
+NumBridge.bt0010_first_subcritical_sacrifice_theorem
+```
+
+For every `q >= 5` coprime to `6`, every normalized distinct three-point
+pattern bounded by `12q - 1` has score at most `2 * (q - 2)`, with equality
+exactly when the pattern is locked to the `6`-lattice and occupies exactly two
+residue classes modulo `q`.
+
+Methodological update: the subcritical direction remains alive. The next proof
+polish is a reusable two-offset residue-shadow count, not another bounded
+search.

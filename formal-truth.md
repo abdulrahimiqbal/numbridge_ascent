@@ -45,3 +45,24 @@ absolute upper-bound equality iff gate-product lattice alignment
 reverse threshold/floor-family theorem still OPEN in Lean
 actual prime-distribution consequences NOT_PROVEN
 ```
+
+For BT-0009, the correct status is:
+
+```text
+PROVED_IN_LEAN
+finite-sieve / subcritical-resonance / structural theorem
+first one-gate-sacrifice case: [2,3,5], k=3, D=59
+score 6 iff 6-lattice lock and exactly two mod-5 shadows
+actual prime-distribution consequences NOT_PROVEN
+```
+
+For BT-0010, the correct status is:
+
+```text
+PROVED_IN_LEAN
+finite-sieve / parametric first-subcritical sacrifice theorem
+[2,3,q] with q >= 5 and coprime to 6
+score 2*(q-2) iff 6-lattice lock and exactly two q-shadows
+canonical [0,6,6q] attainer COMPUTED_BY_PYTHON in requested scans
+actual prime-distribution consequences NOT_PROVEN
+```

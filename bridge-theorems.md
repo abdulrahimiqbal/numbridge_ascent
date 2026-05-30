@@ -18,6 +18,8 @@ structure behind a symbolic phrase.
 | BT-0006 | Wheel-shadow distribution theorem | resonance through prime gates | exact finite-wheel survivor counts factor into local survival counts | full arbitrary positive pairwise-coprime gate-list theorem proved | foundational / finite-sieve / proved-in-Lean |
 | BT-0007 | Finite resonance optimization theorem | strongest resonance, surviving patterns, best prime shapes | exact finite argmax classification over bounded `k,D,P` search spaces | broad all-`k,D,P` finite classifier proved | finite combinatorics / proved-in-Lean |
 | BT-0008 | Resonance lattice maximizer theorem | strongest resonance, gate-product alignment, lattice lock | absolute finite-resonance maximizers lie on the gate-product lattice | upper bound and equality characterization proved; reverse threshold open | finite-sieve structural maximizer |
+| BT-0009 | Subcritical resonance theorem | subcritical resonance, one gate sacrifice, partial lattice lock | below the full lattice threshold, best patterns keep the 6-lattice and sacrifice the 5-gate minimally | first subcritical `[2,3,5]`, `k=3`, `D=59` theorem proved | finite-sieve subcritical structural theorem |
+| BT-0010 | First subcritical sacrifice theorem | first subcritical zone, one gate sacrifice | for `[2,3,q]`, best first-subcritical patterns keep the 6-lattice and occupy exactly two q-residues | parametric upper bound and equality iff proved | finite-sieve parametric structural theorem |
 
 ## Current Lean Surface
 
@@ -74,6 +76,13 @@ NumBridge.canonical_lattice_pattern_valid_if_D_ge
 NumBridge.canonical_lattice_pattern_attains_upper_bound
 NumBridge.bt0008_attainability_threshold_sufficient
 NumBridge.bt0008_maximizer_family_characterization
+NumBridge.bt0009_subcritical_235_k3_D59_upper_bound
+NumBridge.bt0009_subcritical_235_k3_D59_equality_characterization
+NumBridge.bt0009_subcritical_235_k3_D59_structural_breakthrough
+NumBridge.first_subcritical_upper_bound_two_three_q
+NumBridge.first_subcritical_equality_forces_six_lock_and_q_sacrifice
+NumBridge.first_subcritical_six_lock_and_q_sacrifice_attains
+NumBridge.bt0010_first_subcritical_sacrifice_theorem
 ```
 
 ## Honest Status
@@ -127,3 +136,17 @@ proves that the canonical lattice pattern `[0,W,2W,...,(k-1)W]` is a valid
 normalized distinct upper-bound attainer whenever `(k - 1)W <= D`. The reverse
 threshold/floor-family theorem remains open Lean work and is currently only
 bounded-checked by Python.
+
+BT-0009 closes the first subcritical structural theorem. For normalized
+distinct three-point patterns bounded by `59` and gates `[2,3,5]`, Lean proves
+the score is at most `6`, with equality if and only if all offsets are
+divisible by `6` and the pattern occupies exactly two residue classes modulo
+`5`. This explains the twelve Python-discovered maximizers without hardcoding
+their list.
+
+BT-0010 generalizes BT-0009 parametrically. For every `q >= 5` coprime to `6`,
+Lean proves the first-subcritical `[2,3,q]` upper bound
+`2 * (q - 2)` and the equality iff condition: 6-lattice lock plus exactly two
+q-shadows. The direct Lean residue-count proof that `[0,6,6q]` has exactly two
+q-shadows is still isolated as a small open lemma; Python verifies the
+canonical attainer and finds no counterexample in the requested q range.

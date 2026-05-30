@@ -32,6 +32,8 @@ src/bridge/resonance.py
 src/bridge/search_prime_patterns.py
 src/bridge/wheel_product_general.py
 src/bridge/resonance_lattice_maximizer.py
+src/bridge/subcritical_resonance.py
+src/bridge/first_subcritical_sacrifice.py
 ```
 
 CLI examples:
@@ -46,6 +48,8 @@ python3 bridge.py wheel-product-general H=0,2,6 gates=2,3,5
 python3 bridge.py wheel-product-counterexample-search --max-gate 12 --max-offset 20
 python3 bridge.py resonance-lattice-max k=3 D=60 gates=2,3,5
 python3 bridge.py verify-bt0008 --max-k 4 --max-D 80 --gates 2,3,5
+python3 bridge.py subcritical-bt009 --verify
+python3 bridge.py bt0010-scan --q-max 17
 ```
 
 ## Honest Boundary
@@ -112,3 +116,28 @@ This formalizes the symbolic phrase "strongest resonance locks onto the
 gate-product lattice." It remains finite-sieve combinatorics. The next target
 is subcritical resonance: classify the best patterns when the diameter bound is
 too small to fit `[0,W,2W,...,(k-1)W]`.
+
+## Subcritical Structural Layer
+
+BT-0009 closes the first subcritical case:
+
+```text
+gates = [2,3,5], W = 30, k = 3, D = 59
+```
+
+Lean proves that every normalized distinct pattern has finite resonance
+numerator at most `6`, and equality holds exactly when all offsets are
+divisible by `6` and exactly two residues modulo `5` are occupied.
+
+This is the first "one gate sacrifice" theorem: the full `[2,3,5]` lattice
+cannot fit, so the maximizers keep the `[2,3]` lattice and lose one controlled
+unit at the `5` gate.
+
+## Parametric First-Subcritical Layer
+
+BT-0010 generalizes BT-0009 to `[2,3,q]` for `q >= 5` and coprime to `6`.
+Lean proves that the first-subcritical maximum is `2 * (q - 2)`, with equality
+exactly when the pattern is divisible by `6` and has two q-residue shadows.
+
+This keeps the branch finite and structural: it is still about local
+finite-wheel resonance, not actual prime distribution.

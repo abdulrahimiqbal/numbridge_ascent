@@ -101,3 +101,48 @@ Lean also proves that `[0,W,2W,...,(k-1)W]` is normalized, distinct, bounded by
 `D`, and upper-bound-attaining whenever `(k - 1)W <= D`. Python checks the full
 threshold behavior in bounded windows and searches subcritical cases. The full
 reverse threshold/floor-family proof remains open Lean work.
+
+## Subcritical Resonance
+
+BT-0009 proves that the first subcritical window has structure rather than only
+a computed list. For:
+
+```text
+gates = [2,3,5]
+W = 30
+k = 3
+D = 59
+```
+
+Lean proves:
+
+```text
+FiniteResonanceNumerator [2,3,5] H <= 6
+```
+
+for normalized distinct `H`, with equality iff all offsets are divisible by `6`
+and `LocalResidueShadowCount 5 H = 2`.
+
+Interpretation: `[0,30,60]` cannot fit, so the best subcritical patterns keep
+the `2`- and `3`-gate locks and sacrifice exactly one residue at the `5`-gate.
+
+## First Subcritical Sacrifice
+
+BT-0010 proves the parametric version. For `q >= 5` with `Nat.Coprime q 6`,
+use gates `[2,3,q]` and bound `D = 12q - 1`. Lean proves:
+
+```text
+FiniteResonanceNumerator [2,3,q] H <= 2 * (q - 2)
+```
+
+for normalized distinct three-point patterns, with equality iff:
+
+```text
+All offsets are divisible by 6
+and
+LocalResidueShadowCount q H = 2.
+```
+
+This is the first reusable one-gate-sacrifice theorem: full `[2,3,q]` lattice
+lock cannot fit, so maximal subcritical resonance keeps `[2,3]` and sacrifices
+the q-gate minimally.

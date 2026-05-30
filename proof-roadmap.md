@@ -265,5 +265,81 @@ First target:
 gates = [2,3,5], W = 30, k = 3, D = 59
 ```
 
-Python finds max score `6` and twelve maximizers. The Lean target is a
-non-exhaustive structural explanation of why those are best.
+Status: first subcritical structural theorem proved in Lean.
+
+Lean path:
+
+```text
+lean/NumBridge/SubcriticalResonance.lean
+```
+
+Closed theorem names:
+
+```text
+NumBridge.bt0009_subcritical_235_k3_D59_upper_bound
+NumBridge.bt0009_subcritical_235_k3_D59_equality_characterization
+NumBridge.bt0009_subcritical_235_k3_D59_structural_breakthrough
+```
+
+Lean proves max score `6`, with equality iff every offset is divisible by `6`
+and exactly two residues modulo `5` are occupied.
+
+## PR-0010: One-gate-sacrifice theorem
+
+Goal: generalize BT-0009 from `[2,3,5]` to `[2,3,q]`.
+
+Status: parametric theorem proved in Lean.
+
+Lean path:
+
+```text
+lean/NumBridge/FirstSubcriticalSacrifice.lean
+```
+
+Closed theorem names:
+
+```text
+NumBridge.first_subcritical_upper_bound_two_three_q
+NumBridge.first_subcritical_equality_forces_six_lock_and_q_sacrifice
+NumBridge.first_subcritical_six_lock_and_q_sacrifice_attains
+NumBridge.bt0010_first_subcritical_sacrifice_theorem
+```
+
+Theorem:
+
+```text
+q coprime to 6, q > 3
+W = 6q
+k = 3
+D = 2W - 1
+FiniteResonanceNumerator [2,3,q] H <= 2 * (q - 2)
+```
+
+Expected equality condition:
+
+```text
+All offsets are divisible by 6
+and
+LocalResidueShadowCount q H = 2.
+```
+
+This turns the first subcritical example into a reusable finite-sieve schema.
+
+Open proof polish: prove directly in Lean that the concrete canonical pattern
+`[0,6,6q]` has `LocalResidueShadowCount q = 2`. Python verifies it in the
+requested scans, and Lean has a conditional attainer theorem once that local
+count is supplied.
+
+## PR-0011: Two-offset residue-shadow count
+
+Goal: remove the remaining local counting friction.
+
+Target:
+
+```text
+If 0 < q and d % q != 0,
+then LocalResidueShadowCount q [0,d] = 2.
+```
+
+This lemma closes the unconditional canonical attainer for BT-0010 and should
+support later sacrifice theorems.
