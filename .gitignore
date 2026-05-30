@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+.lake/
+lake-manifest.json
+.build/
+.DS_Store

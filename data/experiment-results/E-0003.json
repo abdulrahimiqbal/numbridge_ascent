@@ -1,0 +1,29 @@
+{
+  "bridge_implication": "Digit-root numerology has a robust arithmetic translation: modular arithmetic modulo b - 1.",
+  "id": "E-0003",
+  "metrics": {
+    "bases": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "failure_count": 0,
+    "failures": [],
+    "limit": 5000
+  },
+  "summary": "Across tested bases, digital root preserves congruence modulo base - 1.",
+  "title": "Base-invariance calibration",
+  "verdict": "confirmed-translation"
+}

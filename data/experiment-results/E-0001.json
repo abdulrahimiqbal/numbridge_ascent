@@ -1,0 +1,30 @@
+{
+  "bridge_implication": "Digital-root language translates cleanly to modular arithmetic modulo 9; the prime-specific mysticism collapses to divisibility by 3.",
+  "id": "E-0001",
+  "metrics": {
+    "limit": 100000,
+    "null_count": 33332,
+    "null_forbidden_count": 0,
+    "null_root_distribution": {
+      "1": 0.16665666626665065,
+      "2": 0.16665666626665065,
+      "4": 0.16665666626665065,
+      "5": 0.16668666746669866,
+      "7": 0.16668666746669866,
+      "8": 0.16665666626665065
+    },
+    "prime_count": 9590,
+    "prime_forbidden_count": 0,
+    "prime_root_distribution": {
+      "1": 0.16600625651720544,
+      "2": 0.16715328467153284,
+      "4": 0.16694473409801877,
+      "5": 0.1672575599582899,
+      "7": 0.1659019812304484,
+      "8": 0.1667361835245047
+    }
+  },
+  "summary": "Primes greater than 3 avoid decimal roots 3, 6, and 9, but the same exclusion holds for the fair null of odd nonmultiples of 3.",
+  "title": "Prime digital-root distribution",
+  "verdict": "shallow-real"
+}

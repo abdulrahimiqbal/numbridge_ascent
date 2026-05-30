@@ -1,0 +1,11 @@
+[project]
+name = "numbridge-ascent"
+version = "0.1.0"
+description = "Markdown-led research OS for translating symbolic numerology-like claims into empirical math and Lean theorem targets."
+requires-python = ">=3.10"
+
+[project.scripts]
+numbridge = "numbridge.cli:main"
+
+[tool.unittest]
+start-dir = "tests"

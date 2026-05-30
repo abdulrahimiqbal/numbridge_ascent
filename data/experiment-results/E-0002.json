@@ -1,0 +1,105 @@
+{
+  "bridge_implication": "The symbolic mirror/gate idea maps to palindrome structure and divisibility by base + 1. This is a high-priority Lean target.",
+  "id": "E-0002",
+  "metrics": {
+    "base10_counterexample_count": 0,
+    "base10_counterexamples": [],
+    "base10_tested": 999,
+    "base_general_sample": {
+      "2": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 3,
+        "tested": 200
+      },
+      "3": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 4,
+        "tested": 200
+      },
+      "4": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 5,
+        "tested": 200
+      },
+      "5": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 6,
+        "tested": 200
+      },
+      "6": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 7,
+        "tested": 200
+      },
+      "7": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 8,
+        "tested": 200
+      },
+      "8": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 9,
+        "tested": 200
+      },
+      "9": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 10,
+        "tested": 200
+      },
+      "10": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 11,
+        "tested": 200
+      },
+      "11": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 12,
+        "tested": 200
+      },
+      "12": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 13,
+        "tested": 200
+      },
+      "13": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 14,
+        "tested": 200
+      },
+      "14": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 15,
+        "tested": 200
+      },
+      "15": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 16,
+        "tested": 200
+      },
+      "16": {
+        "counterexample_count": 0,
+        "counterexamples": [],
+        "modulus": 17,
+        "tested": 200
+      }
+    },
+    "max_prefix": 999
+  },
+  "summary": "All generated even-length base-10 palindromes were divisible by 11; sampled base-b even palindromes were divisible by b + 1.",
+  "title": "Palindrome divisibility",
+  "verdict": "strong-bridge"
+}

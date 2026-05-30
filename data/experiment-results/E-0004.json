@@ -1,0 +1,35 @@
+{
+  "bridge_implication": "Do not promote without stronger null models preserving prime-gap constraints.",
+  "id": "E-0004",
+  "metrics": {
+    "adjacent_equal_rate": 0.05974973931178311,
+    "gap_count": 9591,
+    "limit": 100000,
+    "root_distribution": {
+      "1": 0.10634970284641852,
+      "2": 0.1545198623709728,
+      "3": 0.11604629340006256,
+      "4": 0.15326868939630903,
+      "5": 0.054321759983317695,
+      "6": 0.22583672192680637,
+      "7": 0.039516213116463354,
+      "8": 0.09039724741945573,
+      "9": 0.05974350954019393
+    },
+    "shuffled_adjacent_equal_rate": 0.137851929092805,
+    "shuffled_root_distribution": {
+      "1": 0.10634970284641852,
+      "2": 0.1545198623709728,
+      "3": 0.11604629340006256,
+      "4": 0.15326868939630903,
+      "5": 0.054321759983317695,
+      "6": 0.22583672192680637,
+      "7": 0.039516213116463354,
+      "8": 0.09039724741945573,
+      "9": 0.05974350954019393
+    }
+  },
+  "summary": "The gap-root distribution exists, but this first-pass test does not show a strong rhythm beyond marginal gap structure.",
+  "title": "Prime-gap root rhythm",
+  "verdict": "weak"
+}
