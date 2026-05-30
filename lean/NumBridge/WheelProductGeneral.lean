@@ -35,6 +35,76 @@ def WheelSurvivorCountGeneral (gates offsets : List Nat) : Nat :=
   (List.range (gateProduct gates)).countP
     (fun a => gates.all (fun p => GateGoodResidue p offsets (a % p)))
 
+/-- A member of a gate list divides the product of the list. -/
+theorem dvd_gateProduct_of_mem {p : Nat} {gates : List Nat} (hp : p ∈ gates) :
+    p ∣ gateProduct gates := by
+  induction gates with
+  | nil =>
+      cases hp
+  | cons q qs ih =>
+      unfold gateProduct
+      simp at hp
+      rcases hp with rfl | hp
+      · exact Nat.dvd_mul_right p (gateProduct qs)
+      · exact Nat.dvd_trans (ih hp) (Nat.dvd_mul_left (gateProduct qs) q)
+
+/-- A positive gate list has positive product. -/
+theorem gateProduct_pos_of_positive {gates : List Nat} (hpos : PositiveGates gates) :
+    0 < gateProduct gates := by
+  induction gates with
+  | nil =>
+      simp [gateProduct]
+  | cons p ps ih =>
+      have hp : 0 < p := hpos p (by simp)
+      have hps : PositiveGates ps := by
+        intro q hq
+        exact hpos q (by simp [hq])
+      unfold gateProduct
+      exact Nat.mul_pos hp (ih hps)
+
+/-- Under pairwise coprimality, the tail product is coprime to the head gate. -/
+theorem gateProduct_coprime_head_of_pairwise
+    {p : Nat} {gates : List Nat} (hcop : PairwiseCoprime (p :: gates)) :
+    Nat.Coprime (gateProduct gates) p := by
+  induction gates with
+  | nil =>
+      simp [gateProduct]
+  | cons q qs ih =>
+      have hparts := List.pairwise_cons.mp hcop
+      have hpq : Nat.Coprime p q := hparts.left q (by simp)
+      have htailParts := List.pairwise_cons.mp hparts.right
+      have hpqs : ∀ r : Nat, r ∈ qs → Nat.Coprime p r := by
+        intro r hr
+        exact hparts.left r (by simp [hr])
+      have hcop_p_qs : PairwiseCoprime (p :: qs) := by
+        unfold PairwiseCoprime
+        exact List.pairwise_cons.mpr ⟨hpqs, htailParts.right⟩
+      have hprod : Nat.Coprime (gateProduct qs) p := ih hcop_p_qs
+      unfold gateProduct
+      exact hpq.symm.mul_left hprod
+
+/--
+If every gate divides `M`, reducing first modulo `M` preserves all local gate
+coordinates.
+-/
+theorem all_gate_good_mod_of_dvd
+    {M : Nat} (gates offsets : List Nat) (a : Nat)
+    (hdiv : ∀ p : Nat, p ∈ gates → p ∣ M) :
+    gates.all (fun p => GateGoodResidue p offsets ((a % M) % p)) =
+      gates.all (fun p => GateGoodResidue p offsets (a % p)) := by
+  induction gates with
+  | nil =>
+      rfl
+  | cons p ps ih =>
+      have hpdiv : p ∣ M := hdiv p (by simp)
+      have hps :
+          ps.all (fun q => GateGoodResidue q offsets ((a % M) % q)) =
+            ps.all (fun q => GateGoodResidue q offsets (a % q)) := by
+        apply ih
+        intro q hq
+        exact hdiv q (by simp [hq])
+      simp [List.all_cons, Nat.mod_mod_of_dvd a hpdiv, hps]
+
 /-- If two nodup lists have equal length and one is contained in the other, they are permutations. -/
 theorem nodup_subset_length_perm {α : Type} [BEq α] [LawfulBEq α]
     {l u : List α} (hndl : l.Nodup) (hndu : u.Nodup)
@@ -314,6 +384,109 @@ theorem wheel_product_step
     (List.range (M * p)).countP (fun a => PM (a % M) && Pp (a % p)) =
       (List.range M).countP PM * (List.range p).countP Pp :=
   crt_count_product_two_moduli hM hp hcop PM Pp
+
+/--
+Full finite wheel-product theorem for arbitrary positive pairwise-coprime gate
+lists.
+
+The global survivor count over the product wheel factors into the product of
+the local survivor counts at each gate.
+-/
+theorem wheel_survivor_count_product_general
+    (gates offsets : List Nat) (hpos : PositiveGates gates)
+    (hcop : PairwiseCoprime gates) :
+    WheelSurvivorCountGeneral gates offsets =
+      ProductLocalGateSurvivorCount gates offsets := by
+  induction gates with
+  | nil =>
+      simp [WheelSurvivorCountGeneral, ProductLocalGateSurvivorCount, gateProduct]
+  | cons p ps ih =>
+      have hp : 0 < p := hpos p (by simp)
+      have hpos_ps : PositiveGates ps := by
+        intro q hq
+        exact hpos q (by simp [hq])
+      have hcop_ps : PairwiseCoprime ps := by
+        exact (List.pairwise_cons.mp hcop).right
+      have hM : 0 < gateProduct ps := gateProduct_pos_of_positive hpos_ps
+      have hcopMp : Nat.Coprime (gateProduct ps) p :=
+        gateProduct_coprime_head_of_pairwise hcop
+      let PM := fun r => ps.all (fun q => GateGoodResidue q offsets (r % q))
+      let Pp := GateGoodResidue p offsets
+      have hcrt := crt_count_product_two_moduli
+        (M := gateProduct ps) (p := p) hM hp hcopMp PM Pp
+      have htail_count :
+          (List.range (gateProduct ps)).countP PM =
+            ProductLocalGateSurvivorCount ps offsets := by
+        simpa [WheelSurvivorCountGeneral, PM] using ih hpos_ps hcop_ps
+      unfold WheelSurvivorCountGeneral
+      simp only [gateProduct, List.all_cons]
+      change (List.range (p * gateProduct ps)).countP
+          (fun a => GateGoodResidue p offsets (a % p) &&
+            ps.all (fun q => GateGoodResidue q offsets (a % q))) =
+        ProductLocalGateSurvivorCount (p :: ps) offsets
+      rw [Nat.mul_comm p (gateProduct ps)]
+      have hcount :
+          (List.range (gateProduct ps * p)).countP
+              (fun a => GateGoodResidue p offsets (a % p) &&
+                ps.all (fun q => GateGoodResidue q offsets (a % q))) =
+            (List.range (gateProduct ps * p)).countP
+              (fun a => PM (a % gateProduct ps) && Pp (a % p)) := by
+        apply List.countP_congr
+        intro a _
+        have hmod :
+            ps.all
+                (fun q => GateGoodResidue q offsets ((a % gateProduct ps) % q)) =
+              ps.all (fun q => GateGoodResidue q offsets (a % q)) :=
+          all_gate_good_mod_of_dvd (M := gateProduct ps) ps offsets a
+            (fun q hq => dvd_gateProduct_of_mem hq)
+        have heq :
+            (GateGoodResidue p offsets (a % p) &&
+                ps.all (fun q => GateGoodResidue q offsets (a % q))) =
+              (PM (a % gateProduct ps) && Pp (a % p)) := by
+          unfold PM Pp
+          rw [hmod]
+          exact Bool.and_comm _ _
+        rw [heq]
+      rw [hcount, hcrt, htail_count]
+      simp [ProductLocalGateSurvivorCount, LocalGateSurvivorCount, Pp, Nat.mul_comm]
+
+/-- Product of local survivor counts rewritten as the product of `p - nu_p(H)`. -/
+theorem product_local_gate_survivor_count_eq_shadow_sub_general
+    (gates offsets : List Nat) :
+    ProductLocalGateSurvivorCount gates offsets =
+      (gates.map (fun p => p - LocalResidueShadowCount p offsets)).foldr
+        (fun a b => a * b) 1 := by
+  induction gates with
+  | nil =>
+      simp [ProductLocalGateSurvivorCount]
+  | cons p ps ih =>
+      simp [ProductLocalGateSurvivorCount,
+        local_gate_survivor_count_eq_modulus_sub_shadow]
+
+/-- Full BT-0006 theorem in the `p - nu_p(H)` form. -/
+theorem wheel_survivor_count_product_as_shadow_sub_general
+    (gates offsets : List Nat) (hpos : PositiveGates gates)
+    (hcop : PairwiseCoprime gates) :
+    WheelSurvivorCountGeneral gates offsets =
+      (gates.map (fun p => p - LocalResidueShadowCount p offsets)).foldr
+        (fun a b => a * b) 1 := by
+  rw [wheel_survivor_count_product_general gates offsets hpos hcop,
+    product_local_gate_survivor_count_eq_shadow_sub_general]
+
+/--
+BT-0006 squarefree wheel-shadow distribution theorem.
+
+For any finite positive pairwise-coprime gate list, the number of residues
+surviving all local gates over the product wheel is the product of the local
+shadow complements.
+-/
+theorem bt0006_squarefree_wheel_shadow_distribution
+    (gates offsets : List Nat) (hpos : PositiveGates gates)
+    (hcop : PairwiseCoprime gates) :
+    WheelSurvivorCountGeneral gates offsets =
+      (gates.map (fun p => p - LocalResidueShadowCount p offsets)).foldr
+        (fun a b => a * b) 1 :=
+  wheel_survivor_count_product_as_shadow_sub_general gates offsets hpos hcop
 
 /-- The 6-wheel product formula, now proved by the general two-modulus CRT theorem. -/
 theorem wheel6_residue_product_formula_via_crt (offsets : List Nat) :

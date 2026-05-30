@@ -2,13 +2,17 @@
 
 ## 1. Was the arbitrary squarefree-wheel theorem closed in Lean?
 
-No. The full theorem for an arbitrary finite list of positive pairwise-coprime
-gates remains open.
+Yes. The full finite-wheel theorem for an arbitrary finite list of positive
+pairwise-coprime gates is now closed in Lean.
 
-## 2. Exact Lean theorem names if fully closed
+## 2. Exact Lean theorem names
 
-Not applicable. The repo should not claim `bt0006_squarefree_wheel_shadow_distribution`
-until the arbitrary gate-list induction is actually proved.
+```text
+NumBridge.wheel_survivor_count_product_general
+NumBridge.product_local_gate_survivor_count_eq_shadow_sub_general
+NumBridge.wheel_survivor_count_product_as_shadow_sub_general
+NumBridge.bt0006_squarefree_wheel_shadow_distribution
+```
 
 ## 3. Reusable CRT/cardinality lemma proved
 
@@ -32,6 +36,8 @@ The named alias is:
 NumBridge.wheel_product_step
 ```
 
+The induction applies this lemma recursively over the gate list.
+
 ## 4. Did this replace the explicit 6/30 Boolean tables?
 
 Yes for the replacement proof layer. The older table theorems remain in
@@ -54,6 +60,10 @@ NumBridge.wheel6_residue_product_formula_via_crt
 NumBridge.wheel30_residue_product_formula_via_crt
 NumBridge.bt0006_two_moduli_wheel_shadow_distribution
 NumBridge.bt0006_two_moduli_wheel_shadow_distribution_as_shadow_sub
+NumBridge.wheel_survivor_count_product_general
+NumBridge.product_local_gate_survivor_count_eq_shadow_sub_general
+NumBridge.wheel_survivor_count_product_as_shadow_sub_general
+NumBridge.bt0006_squarefree_wheel_shadow_distribution
 ```
 
 Existing BT-0006 product-layer theorems also remain proved:
@@ -91,23 +101,23 @@ python3 bridge.py wheel-product-counterexample-search --max-gate 12 --max-offset
 
 ## 7. OPEN
 
-The remaining Lean theorem is the arbitrary gate-list induction:
+The arbitrary gate-list induction is no longer open. The closed theorem is:
 
 ```text
 WheelSurvivorCountGeneral gates H =
 ProductLocalGateSurvivorCount gates H
 ```
 
-under positive pairwise-coprime gates, followed by the shadow-substitution form:
+under positive pairwise-coprime gates, followed by the closed
+shadow-substitution form:
 
 ```text
 WheelSurvivorCountGeneral gates H =
 product over p in gates of (p - LocalResidueShadowCount p H)
 ```
 
-The proof needs a clean API showing that the accumulated product modulus stays
-positive and coprime to the next gate, then applying
-`crt_count_product_two_moduli` inductively.
+Still open: a more ergonomic reusable `Finset`/`Fin` API, and any theorem about
+actual prime distribution rather than finite wheel candidates.
 
 ## 8. Finite-sieve boundary
 
@@ -123,4 +133,4 @@ local survival through residue gates. A pattern "resonates" in this branch only
 when its occupied residue shadows leave surviving classes across the chosen
 finite wheel.
 
-Classification: `finite-sieve / CRT / formalization-progress`.
+Classification: `finite-sieve / CRT / proved-in-Lean`.

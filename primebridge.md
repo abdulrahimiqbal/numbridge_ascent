@@ -63,5 +63,5 @@ R_W(H) = {a mod W : every a+h is coprime to W}
 The repo checks this product formula by brute force for finite wheels and uses
 it as the rigorous distribution layer underneath resonance ranking. Lean proves
 the central two-modulus CRT/count theorem and uses it to replace the wheel 6
-and wheel 30 table proofs; the arbitrary squarefree gate-list theorem is still
-open.
+and wheel 30 table proofs; Lean now also proves the arbitrary positive
+pairwise-coprime gate-list finite-wheel theorem.

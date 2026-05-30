@@ -15,7 +15,7 @@ structure behind a symbolic phrase.
 | BT-0003 | Prime completion-root exclusions are residue obstructions | completion roots vanish from primes | if a prime divisor blocks a residue class, prime roots avoid it | decimal `q = 3`, `b = 10` case proved | shallow-real |
 | BT-0004 | Sieve gates and prime-pattern admissibility | prime patterns survive only when they avoid total residue collapse | offset sets that cover all residues modulo a prime obstruct prime constellations | `n,n+2,n+4` obstruction and finite-cover lemma proved | useful / prime-structural |
 | BT-0005 | Residue shadow resonance | gate, shadow, resonance, survival | residue shadows and local survival factors rank prime-pattern candidates | engine plus concrete Lean facts proved | prime-structural / search-enabling |
-| BT-0006 | Wheel-shadow distribution theorem | resonance and survival through prime gates | exact finite-wheel survivor counts factor into local survival counts | central two-modulus CRT/count theorem proved; wheel 6 and 30 table proofs replaced; full arbitrary gate-list induction open | finite-sieve / CRT / formalization-progress |
+| BT-0006 | Wheel-shadow distribution theorem | resonance and survival through prime gates | exact finite-wheel survivor counts factor into local survival counts | full arbitrary positive pairwise-coprime gate-list theorem proved | finite-sieve / CRT / proved-in-Lean |
 
 ## Current Lean Surface
 
@@ -54,6 +54,10 @@ NumBridge.wheel6_residue_product_formula_via_crt
 NumBridge.wheel30_residue_product_formula_via_crt
 NumBridge.bt0006_two_moduli_wheel_shadow_distribution
 NumBridge.bt0006_two_moduli_wheel_shadow_distribution_as_shadow_sub
+NumBridge.wheel_survivor_count_product_general
+NumBridge.product_local_gate_survivor_count_eq_shadow_sub_general
+NumBridge.wheel_survivor_count_product_as_shadow_sub_general
+NumBridge.bt0006_squarefree_wheel_shadow_distribution
 ```
 
 ## Honest Status
@@ -79,10 +83,11 @@ series, pattern search, and empirical prime-translate counts. The Lean layer
 records concrete obstruction/survival facts, while the Hardy-Littlewood
 heuristic remains explicitly outside the proof boundary.
 
-BT-0006 is finite-sieve / CRT / formalization-progress. Python verifies the
+BT-0006 is finite-sieve / CRT / proved-in-Lean. Python verifies the
 exact finite-wheel product formula for arbitrary tested pairwise-coprime gate
 lists. Lean now proves the local identity `survivors_p(H) = p - nu_p(H)` for
 every offset list, a reusable two-modulus CRT/cardinality theorem, and exact
-6-wheel and 30-wheel product formulas derived from that theorem rather than
-from explicit Boolean tables. The full arbitrary squarefree product theorem
-remains open as an induction/API roadmap target.
+6-wheel and 30-wheel product formulas derived from that theorem. The full
+arbitrary positive pairwise-coprime gate-list product theorem is now closed in
+Lean as `NumBridge.bt0006_squarefree_wheel_shadow_distribution`. This remains a
+finite-sieve distribution theorem, not an actual prime-distribution theorem.

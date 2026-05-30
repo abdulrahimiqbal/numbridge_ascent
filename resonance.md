@@ -54,5 +54,5 @@ wheel density is:
 Lean now proves the reusable two-modulus CRT/cardinality step underlying this
 factorization and derives the wheel 6 and wheel 30 product formulas from it.
 Python mirrors the broader arbitrary pairwise-coprime gate-list formula and
-runs finite counterexample searches. The full arbitrary gate-list Lean induction
-remains open.
+runs finite counterexample searches. Lean now also proves the full arbitrary
+positive pairwise-coprime gate-list finite-wheel theorem.

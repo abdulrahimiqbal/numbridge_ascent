@@ -2,7 +2,7 @@
 id: BT-0006
 type: bridge-theorem
 title: Wheel-shadow distribution theorem
-status: central-crt-step-proved-full-squarefree-open
+status: proved-in-lean-finite-sieve-crt
 source_bridges:
   - B-0006
 related_conjectures:
@@ -68,6 +68,10 @@ NumBridge.wheel6_residue_product_formula_via_crt
 NumBridge.wheel30_residue_product_formula_via_crt
 NumBridge.bt0006_two_moduli_wheel_shadow_distribution
 NumBridge.bt0006_two_moduli_wheel_shadow_distribution_as_shadow_sub
+NumBridge.wheel_survivor_count_product_general
+NumBridge.product_local_gate_survivor_count_eq_shadow_sub_general
+NumBridge.wheel_survivor_count_product_as_shadow_sub_general
+NumBridge.bt0006_squarefree_wheel_shadow_distribution
 ```
 
 The 6-wheel and 30-wheel theorems are no longer tied to a named pattern such as
@@ -82,18 +86,33 @@ count a in range (M*p) with PM(a mod M) and Pp(a mod p)
 ```
 
 under positive coprime moduli. The wheel 6 and wheel 30 product formulas now
-have replacement proofs via this theorem. The fully general finite gate-list
-induction is still open.
+have replacement proofs via this theorem.
+
+The full induction is now closed for arbitrary finite positive pairwise-coprime
+gate lists:
+
+```text
+WheelSurvivorCountGeneral gates H =
+ProductLocalGateSurvivorCount gates H
+```
+
+and in shadow-complement form:
+
+```text
+WheelSurvivorCountGeneral gates H =
+prod_{p in gates} (p - nu_p(H))
+```
 
 ## Classification
 
-Finite-sieve / CRT / formalization-progress.
+Finite-sieve / CRT / proved-in-Lean.
 
 This is about exact finite-sieve candidate distribution, not about actual prime
 distribution.
 
 ## Remaining Work
 
-Prove the full squarefree product theorem in Lean for arbitrary finite
-pairwise-coprime gate lists. The next missing piece is the induction step that
-packages the two-modulus CRT lemma into a clean gate-list theorem.
+The next work is not this finite-wheel theorem; it is either a cleaner
+`Finset`/`Fin` API for reuse or a separate theorem connecting these finite
+wheel counts to analytic prime-distribution hypotheses. No actual-prime
+distribution theorem is claimed here.

@@ -23,6 +23,8 @@ The current micro-targets are intentionally small and standard-library-only:
 - `NumBridge.crt_count_product_two_moduli`
 - `NumBridge.wheel6_residue_product_formula_via_crt`
 - `NumBridge.wheel30_residue_product_formula_via_crt`
+- `NumBridge.wheel_survivor_count_product_general`
+- `NumBridge.bt0006_squarefree_wheel_shadow_distribution`
 - `NumBridge.wheel30_residue_product_formula_as_shadow_sub`
 
 `NumBridge.four_digit_mirror_divisible_by_11` is a closed
@@ -47,5 +49,5 @@ The BT-0006 wheel product layer lives in `NumBridge.WheelProduct` and
 `NumBridge.WheelProductGeneral`. It proves the local `p - nu_p(H)` survivor
 count for arbitrary finite offset lists, a reusable two-modulus CRT/count
 theorem for coprime moduli, and exact arbitrary-pattern product formulas for
-the squarefree wheels 6 and 30 via that theorem. The full arbitrary gate-list
-squarefree theorem remains open.
+the squarefree wheels 6 and 30 via that theorem. It now also proves the full
+arbitrary positive pairwise-coprime gate-list finite-wheel theorem.

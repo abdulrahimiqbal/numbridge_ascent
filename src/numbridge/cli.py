@@ -423,7 +423,7 @@ def cmd_seek_lean_bridge(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = write_lean_bridge_report(paths)
     print(f"Wrote {path.relative_to(paths.root)}")
-    print("Top recommendation: extend B-0006 from the two-modulus CRT step to the full Lean squarefree wheel product theorem.")
+    print("Top recommendation: reuse the closed BT-0006 finite-wheel theorem while keeping actual-prime distribution claims separate.")
     return 0
 
 

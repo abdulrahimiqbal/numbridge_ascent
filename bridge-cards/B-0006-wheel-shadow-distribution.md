@@ -2,7 +2,7 @@
 id: B-0006
 type: bridge
 title: Wheel-shadow distribution
-status: central-crt-step-proved-full-squarefree-open
+status: proved-in-lean-finite-sieve-crt
 source_leads:
   - L-0006
 related_conjectures:
@@ -46,21 +46,26 @@ NumBridge.wheel6_residue_product_formula_via_crt
 NumBridge.wheel30_residue_product_formula_via_crt
 NumBridge.bt0006_two_moduli_wheel_shadow_distribution
 NumBridge.bt0006_two_moduli_wheel_shadow_distribution_as_shadow_sub
+NumBridge.wheel_survivor_count_product_general
+NumBridge.product_local_gate_survivor_count_eq_shadow_sub_general
+NumBridge.wheel_survivor_count_product_as_shadow_sub_general
+NumBridge.bt0006_squarefree_wheel_shadow_distribution
 ```
 
 The 6-wheel and 30-wheel product theorems hold for arbitrary finite offset
 lists and now have proofs via a reusable two-modulus CRT/count theorem. The
-arbitrary squarefree-wheel theorem is still open.
+arbitrary positive pairwise-coprime gate-list theorem is also proved in Lean.
 
 ## Claim Labels
 
 - `INTERPRETIVE_FORMALIZATION`
 - `COMPUTED_BY_PYTHON`
 - `PROVED_IN_LEAN` for concrete facts, arbitrary-pattern 6-/30-wheel formulas,
-  and the reusable two-modulus CRT/cardinality theorem
-- `OPEN` for the full arbitrary gate-list squarefree Lean theorem
+  the reusable two-modulus CRT/cardinality theorem, and the full arbitrary
+  positive pairwise-coprime gate-list finite-sieve theorem
 
 ## Classification
 
-Finite-sieve / CRT / bridge theorem. This is not a theorem about actual primes;
-it is an exact theorem about finite-sieve candidate residues.
+Finite-sieve / CRT / bridge theorem, proved in Lean. This is not a theorem
+about actual primes; it is an exact theorem about finite-sieve candidate
+residues.

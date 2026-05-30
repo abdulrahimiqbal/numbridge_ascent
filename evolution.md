@@ -114,6 +114,22 @@ NumBridge.wheel30_residue_product_formula_via_crt
 ```
 
 Methodological update: a bridge theorem can make a real project breakthrough
-without closing the largest possible statement. The honest status is now:
-central CRT step proved in Lean, arbitrary squarefree gate-list induction still
-open, finite-sieve distribution only.
+without closing the largest possible statement. At this point, the honest
+status was: central CRT step proved in Lean, arbitrary squarefree gate-list
+induction still open, finite-sieve distribution only.
+
+## 2026-05-30: BT-0006 arbitrary gate-list induction closed
+
+The finite-sieve product theorem is now closed in Lean for arbitrary finite
+positive pairwise-coprime gate lists:
+
+```text
+NumBridge.wheel_survivor_count_product_general
+NumBridge.wheel_survivor_count_product_as_shadow_sub_general
+NumBridge.bt0006_squarefree_wheel_shadow_distribution
+```
+
+Methodological update: the resonance-through-gates branch has crossed from
+Python-checked finite examples to a reusable Lean theorem schema. The boundary
+does not move: this is exact finite-wheel candidate distribution, not an
+actual-prime distribution theorem.

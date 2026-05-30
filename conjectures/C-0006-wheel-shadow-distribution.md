@@ -2,10 +2,10 @@
 id: C-0006
 type: conjecture
 title: Wheel-shadow distribution
-status: central-crt-step-proved-full-squarefree-open
+status: proved-in-lean-finite-sieve-crt
 source_lead: L-0006
 bridge: B-0006
-lean_status: central-two-modulus-crt-count-theorem-proved-full-list-induction-open
+lean_status: arbitrary-positive-pairwise-coprime-gate-list-theorem-proved
 theorem_kind: wheel_shadow_distribution
 related_experiments: []
 ---
@@ -30,10 +30,8 @@ product-side arithmetic for `[0,2,6]`.
 
 `PROVED_IN_LEAN`: for arbitrary finite offset lists, local gate survivors are
 `p - nu_p(H)`; a reusable two-modulus CRT/cardinality theorem factors local
-Boolean predicates over coprime moduli; and the product formula holds for the
-fixed squarefree wheels 6 and 30 via that theorem.
-
-`OPEN`: full arbitrary gate-list squarefree product theorem in Lean.
+Boolean predicates over coprime moduli; and the full arbitrary positive
+pairwise-coprime gate-list product theorem holds in Lean.
 
 ## Boundary
 

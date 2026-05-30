@@ -1,5 +1,12 @@
 # BT-0006 Formalization Push - 2026-05-30
 
+## 2026-05-30 Update
+
+This report is superseded by
+`reports/bt0006_general_wheel_product_breakthrough_2026-05-30.md`. The full
+arbitrary finite positive pairwise-coprime gate-list induction is now closed in
+Lean as `NumBridge.bt0006_squarefree_wheel_shadow_distribution`.
+
 ## Goal
 
 Upgrade BT-0006 from Python-checked finite examples toward a general

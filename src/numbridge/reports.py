@@ -79,16 +79,16 @@ def build_lean_bridge_report(paths: RepoPaths) -> str:
         "Current Lean breakthrough:",
         "",
         "```text",
-        "crt_count_product_two_moduli proves the reusable two-modulus CRT/count factorization; wheel 6 and 30 now have replacement proofs via that theorem.",
+        "bt0006_squarefree_wheel_shadow_distribution proves the finite-wheel product theorem for arbitrary finite positive pairwise-coprime gate lists.",
         "```",
         "",
         "Next non-calibration theorem target:",
         "",
         "```text",
-        "Turn the two-modulus CRT/count theorem into an induction over arbitrary positive pairwise-coprime gate lists.",
+        "Build a cleaner reusable API for the wheel theorem, then keep any actual-prime distribution work in a separate analytic layer.",
         "```",
         "",
-        "The prime digital-root theorem is shallow-real; BT-0006 is finite-sieve / CRT formalization because it gives exact distribution for wheel candidates, not actual primes.",
+        "The prime digital-root theorem is shallow-real; BT-0006 is finite-sieve / CRT and proved in Lean because it gives exact distribution for wheel candidates, not actual primes.",
     ])
     return "\n".join(lines) + "\n"
 

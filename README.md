@@ -155,7 +155,8 @@ A strong bridge becomes one or more of:
 This repo now includes closed calibration Lean theorems, a bridge-theorem layer,
 and a PrimeBridge Resonance Engine. BT-0006 now has a Lean product layer for
 local gates, a reusable two-modulus CRT/count theorem, and squarefree wheel 6
-and 30 formulas derived from that theorem, but not yet the full arbitrary
-squarefree gate-list theorem. It does not prove the prime k-tuples conjecture;
-it builds a search-enabling bridge from symbolic resonance language to local
-residue structure used in sieve heuristics.
+and 30 formulas derived from that theorem. The full arbitrary positive
+pairwise-coprime gate-list finite-wheel theorem is proved in Lean. It does not
+prove the prime k-tuples conjecture; it builds a search-enabling bridge from
+symbolic resonance language to local residue structure used in sieve
+heuristics.

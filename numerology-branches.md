@@ -72,6 +72,7 @@ NumBridge.twin_survives_mod_two_three_iff_mod_six_five
 NumBridge.zero_two_four_no_survivor_mod_two_three
 NumBridge.crt_count_product_two_moduli
 NumBridge.wheel30_residue_product_formula_via_crt
+NumBridge.bt0006_squarefree_wheel_shadow_distribution
 ```
 
 Python evidence:
@@ -88,8 +89,7 @@ compare_patterns_by_wheel_distribution
 Truth label: `FORMALLY_TRUE_AS_FINITE_SIEVE_DISTRIBUTION`.
 
 Claim labels: `INTERPRETIVE_FORMALIZATION`, `PROVED_IN_LEAN`,
-`COMPUTED_BY_PYTHON`, `HEURISTIC` for resonance ranking, and `OPEN` for the
-full arbitrary squarefree gate-list Lean theorem.
+`COMPUTED_BY_PYTHON`, and `HEURISTIC` for resonance ranking.
 
 ## Not Proven
 

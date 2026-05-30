@@ -1,5 +1,11 @@
 # Wheel-Shadow Distribution Breakthrough Report - 2026-05-29
 
+## 2026-05-30 Update
+
+This historical report records the status before the general induction was
+closed. The full arbitrary finite positive pairwise-coprime gate-list theorem is
+now proved in Lean as `NumBridge.bt0006_squarefree_wheel_shadow_distribution`.
+
 ## Targeted Prime-Distribution Theorem
 
 Target: BT-0006, the Wheel-Shadow Distribution Theorem.
