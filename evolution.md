@@ -133,3 +133,48 @@ Methodological update: the resonance-through-gates branch has crossed from
 Python-checked finite examples to a reusable Lean theorem schema. The boundary
 does not move: this is exact finite-wheel candidate distribution, not an
 actual-prime distribution theorem.
+
+## 2026-05-30: BT-0007 becomes the next new-math candidate
+
+BT-0006 is now treated as the first foundational NumBridge theorem
+breakthrough: a numerological motif has been compiled into a general Lean
+theorem under a precise finite-sieve interpretation.
+
+The next theorem target is BT-0007, finite resonance optimization. The project
+should now search for finite combinatorics theorems about which admissible
+patterns maximize truncated wheel resonance under constraints, rather than
+adding another CRT theorem or claiming Hardy-Littlewood-type results.
+
+## 2026-05-30: BT-0007 first optimization theorem closed
+
+Lean now proves the first exact finite resonance optimization theorem:
+
+```text
+NumBridge.bt0007_two_point_bounded_finite_resonance_optimization
+```
+
+For two-point patterns `[0,d]`, the finite resonance numerator is bounded by
+the product of best local gate factors; if the diameter bound allows
+`d = gateProduct gates`, that canonical gap attains the bound.
+
+Methodological update: the post-BT-0006 path is now alive. The project has
+moved from exact finite-wheel distribution to a proved finite optimization
+statement, while still making no actual-prime distribution claim.
+
+## 2026-05-30: BT-0007 broad finite classifier closed
+
+Lean now proves the broad all-`k,D,P` exhaustive finite classification theorem:
+
+```text
+NumBridge.bt0007_all_k_D_P_finite_resonance_classification
+```
+
+For every finite cardinality parameter `k`, diameter parameter `D`, and gate
+bound `P`, the generated classifier contains exactly the bounded canonical
+patterns whose finite resonance numerator is globally maximal in that finite
+search space.
+
+Methodological update: this is a genuine broad finite classification, but it is
+algorithmic/exhaustive rather than a closed-form structural theorem. The next
+mathematical leap is to identify and prove human-readable structure in those
+maximizer families.

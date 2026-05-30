@@ -7,7 +7,7 @@ source_leads:
   - L-0006
 related_conjectures:
   - C-0006
-bridge_strength: finite-sieve-crt-formalization
+bridge_strength: foundational-finite-sieve-crt-formalization
 lean_priority: high
 ---
 # B-0006: Wheel-Shadow Distribution
@@ -66,6 +66,17 @@ arbitrary positive pairwise-coprime gate-list theorem is also proved in Lean.
 
 ## Classification
 
-Finite-sieve / CRT / bridge theorem, proved in Lean. This is not a theorem
-about actual primes; it is an exact theorem about finite-sieve candidate
-residues.
+Status: `PROVED_IN_LEAN`.
+
+Type: finite-sieve / CRT / wheel-shadow distribution.
+
+Bridge branch: resonance through prime gates.
+
+Mathematical depth: foundational for NumBridge.
+
+Prime-distribution status: pre-analytic finite model.
+
+Numerology status: formally true under finite-sieve interpretation.
+
+This is not a theorem about actual primes; it is an exact theorem about
+finite-sieve candidate residues.

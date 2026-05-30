@@ -423,7 +423,7 @@ def cmd_seek_lean_bridge(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = write_lean_bridge_report(paths)
     print(f"Wrote {path.relative_to(paths.root)}")
-    print("Top recommendation: reuse the closed BT-0006 finite-wheel theorem while keeping actual-prime distribution claims separate.")
+    print("Top recommendation: use the closed BT-0007 all-k,D,P classifier to hunt closed-form maximizer families.")
     return 0
 
 

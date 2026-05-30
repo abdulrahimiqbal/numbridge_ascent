@@ -25,6 +25,8 @@ The current micro-targets are intentionally small and standard-library-only:
 - `NumBridge.wheel30_residue_product_formula_via_crt`
 - `NumBridge.wheel_survivor_count_product_general`
 - `NumBridge.bt0006_squarefree_wheel_shadow_distribution`
+- `NumBridge.bt0007_two_point_bounded_finite_resonance_optimization`
+- `NumBridge.bt0007_all_k_D_P_finite_resonance_classification`
 - `NumBridge.wheel30_residue_product_formula_as_shadow_sub`
 
 `NumBridge.four_digit_mirror_divisible_by_11` is a closed
@@ -51,3 +53,8 @@ count for arbitrary finite offset lists, a reusable two-modulus CRT/count
 theorem for coprime moduli, and exact arbitrary-pattern product formulas for
 the squarefree wheels 6 and 30 via that theorem. It now also proves the full
 arbitrary positive pairwise-coprime gate-list finite-wheel theorem.
+
+The BT-0007 finite optimization layer lives in
+`NumBridge.ResonanceOptimization`. It proves the first two-point bounded
+finite-resonance optimization theorem and a broad all-`k,D,P` exhaustive finite
+classifier theorem.

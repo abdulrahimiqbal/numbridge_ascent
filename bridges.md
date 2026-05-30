@@ -74,7 +74,7 @@ Symbolic form: resonance and survival through prime gates.
 Mathematical form: exact finite-wheel survivor counts factor as a product of
 local survival counts.
 
-Status: finite-sieve / CRT / proved-in-Lean. Python verifies the
+Status: PROVED_IN_LEAN / foundational finite-sieve CRT theorem. Python verifies the
 product formula for finite wheels and arbitrary tested pairwise-coprime gate
 lists; Lean proves concrete wheel-shadow facts, the local `p - nu_p(H)` count
 for arbitrary offset lists, a reusable two-modulus CRT/cardinality theorem, and
@@ -82,6 +82,33 @@ arbitrary-pattern product formulas for the 6-wheel and 30-wheel via that
 theorem. Lean now also proves the full arbitrary positive pairwise-coprime
 gate-list theorem.
 
+Prime-distribution status: pre-analytic finite model. Numerology status:
+formally true under finite-sieve interpretation.
+
 Bridge Theorem:
 
 - `BT-0006`: wheel-shadow distribution theorem.
+
+## B-0007: Finite resonance optimization
+
+Symbolic form: strongest resonance patterns survive the finite gates best.
+
+Mathematical form: optimize the truncated finite-wheel resonance score
+
+```text
+prod_{p <= P} (1 - nu_p(H) / p) / (1 - 1 / p)^k
+```
+
+over admissible `k`-offset patterns subject to constraints such as
+`diameter(H) <= D`.
+
+Status: broad exhaustive finite classifier proved in Lean. The closed theorem
+classifies maximizers for every `k`, `D`, and `P` by generated argmax:
+membership in the classifier is equivalent to being a bounded candidate whose
+finite resonance numerator is globally maximal in that finite search space.
+Closed-form structural descriptions of all maximizing families remain open
+finite combinatorics.
+
+Bridge Theorem:
+
+- `BT-0007`: finite resonance optimization theorem.

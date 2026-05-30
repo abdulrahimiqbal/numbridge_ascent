@@ -15,7 +15,8 @@ structure behind a symbolic phrase.
 | BT-0003 | Prime completion-root exclusions are residue obstructions | completion roots vanish from primes | if a prime divisor blocks a residue class, prime roots avoid it | decimal `q = 3`, `b = 10` case proved | shallow-real |
 | BT-0004 | Sieve gates and prime-pattern admissibility | prime patterns survive only when they avoid total residue collapse | offset sets that cover all residues modulo a prime obstruct prime constellations | `n,n+2,n+4` obstruction and finite-cover lemma proved | useful / prime-structural |
 | BT-0005 | Residue shadow resonance | gate, shadow, resonance, survival | residue shadows and local survival factors rank prime-pattern candidates | engine plus concrete Lean facts proved | prime-structural / search-enabling |
-| BT-0006 | Wheel-shadow distribution theorem | resonance and survival through prime gates | exact finite-wheel survivor counts factor into local survival counts | full arbitrary positive pairwise-coprime gate-list theorem proved | finite-sieve / CRT / proved-in-Lean |
+| BT-0006 | Wheel-shadow distribution theorem | resonance through prime gates | exact finite-wheel survivor counts factor into local survival counts | full arbitrary positive pairwise-coprime gate-list theorem proved | foundational / finite-sieve / proved-in-Lean |
+| BT-0007 | Finite resonance optimization theorem | strongest resonance, surviving patterns, best prime shapes | exact finite argmax classification over bounded `k,D,P` search spaces | broad all-`k,D,P` finite classifier proved | finite combinatorics / proved-in-Lean |
 
 ## Current Lean Surface
 
@@ -58,6 +59,11 @@ NumBridge.wheel_survivor_count_product_general
 NumBridge.product_local_gate_survivor_count_eq_shadow_sub_general
 NumBridge.wheel_survivor_count_product_as_shadow_sub_general
 NumBridge.bt0006_squarefree_wheel_shadow_distribution
+NumBridge.two_point_finite_resonance_score_le_max
+NumBridge.two_point_gateProduct_attains_resonance_max
+NumBridge.bt0007_two_point_bounded_finite_resonance_optimization
+NumBridge.finite_resonance_maximizers_classify
+NumBridge.bt0007_all_k_D_P_finite_resonance_classification
 ```
 
 ## Honest Status
@@ -91,3 +97,14 @@ every offset list, a reusable two-modulus CRT/cardinality theorem, and exact
 arbitrary positive pairwise-coprime gate-list product theorem is now closed in
 Lean as `NumBridge.bt0006_squarefree_wheel_shadow_distribution`. This remains a
 finite-sieve distribution theorem, not an actual prime-distribution theorem.
+Mathematical depth: foundational for NumBridge. Prime-distribution status:
+pre-analytic finite model. Numerology status: formally true under the
+finite-sieve interpretation.
+
+BT-0007 is now closed as an exact exhaustive finite classifier for all
+parameters `k`, `D`, and `P`: Lean defines the bounded candidate universe,
+the finite resonance numerator, the finite argmax classifier, and proves that
+classifier membership is equivalent to being a bounded candidate whose score is
+globally maximal inside the finite search space. This is broad finite
+classification, not a closed-form structural description of all maximizing
+families and not an analytic prime-distribution claim.

@@ -65,3 +65,31 @@ it as the rigorous distribution layer underneath resonance ranking. Lean proves
 the central two-modulus CRT/count theorem and uses it to replace the wheel 6
 and wheel 30 table proofs; Lean now also proves the arbitrary positive
 pairwise-coprime gate-list finite-wheel theorem.
+
+## Next Phase: Finite Resonance Optimization
+
+BT-0007 should study finite optimization of truncated resonance scores over
+admissible offset patterns:
+
+```text
+Res_P(H) = prod_{p <= P} (1 - nu_p(H) / p) / (1 - 1 / p)^k
+```
+
+Candidate questions:
+
+- Among admissible `k`-patterns with `diameter(H) <= D`, which patterns
+  maximize `Res_P(H)`?
+- Are there reusable upper bounds in terms of residue-shadow sizes?
+- Do maximizing families match known prime-constellation patterns, or produce
+  new finite classifications worth checking against the literature?
+
+First Lean closure:
+
+```text
+NumBridge.bt0007_two_point_bounded_finite_resonance_optimization
+NumBridge.bt0007_all_k_D_P_finite_resonance_classification
+```
+
+This proves both the two-point bounded optimization case and the broad
+all-`k,D,P` exhaustive finite classifier. It is finite combinatorics, not prime
+distribution.

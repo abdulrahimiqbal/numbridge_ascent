@@ -10,6 +10,7 @@ This file indexes live and historical leads. Individual lead cards live in `lead
 | L-0004 | 7 resists factor collapse | active | test resistance as factor complexity / persistence |
 | L-0005 | Prime constellation gates | theorem-proved | total residue coverage obstructs prime patterns |
 | L-0006 | Prime-pattern resonance | search-engine-built | residue shadows and local factors rank admissible patterns |
+| L-0007 | Finite resonance optimization | theorem-proved | broad all-k,D,P exhaustive finite classifier theorem |
 
 ## How to add a lead
 

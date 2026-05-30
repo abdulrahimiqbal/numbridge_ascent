@@ -91,6 +91,11 @@ Truth label: `FORMALLY_TRUE_AS_FINITE_SIEVE_DISTRIBUTION`.
 Claim labels: `INTERPRETIVE_FORMALIZATION`, `PROVED_IN_LEAN`,
 `COMPUTED_BY_PYTHON`, and `HEURISTIC` for resonance ranking.
 
+BT-0006 is the first foundational theorem breakthrough for this branch:
+resonance through prime gates is exactly finite-sieve residue survival under
+the wheel-shadow interpretation. BT-0007 is the next target: optimize finite
+resonance scores over constrained admissible patterns.
+
 ## Not Proven
 
 The following are explicitly `NOT_PROVEN`:

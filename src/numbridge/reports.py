@@ -85,7 +85,7 @@ def build_lean_bridge_report(paths: RepoPaths) -> str:
         "Next non-calibration theorem target:",
         "",
         "```text",
-        "Build a cleaner reusable API for the wheel theorem, then keep any actual-prime distribution work in a separate analytic layer.",
+        "BT-0007: use the closed all-k,D,P finite classifier to search for closed-form maximizer families.",
         "```",
         "",
         "The prime digital-root theorem is shallow-real; BT-0006 is finite-sieve / CRT and proved in Lean because it gives exact distribution for wheel candidates, not actual primes.",

@@ -8,7 +8,7 @@ source_bridges:
 related_conjectures:
   - C-0006
 lean_path: lean/NumBridge/WheelProductGeneral.lean
-label: finite-sieve-crt-bridge-theorem
+label: foundational-finite-sieve-crt-bridge-theorem
 ---
 # BT-0006: Wheel-Shadow Distribution Theorem
 
@@ -105,7 +105,17 @@ prod_{p in gates} (p - nu_p(H))
 
 ## Classification
 
-Finite-sieve / CRT / proved-in-Lean.
+Status: `PROVED_IN_LEAN`.
+
+Type: finite-sieve / CRT / wheel-shadow distribution.
+
+Bridge branch: resonance through prime gates.
+
+Mathematical depth: foundational for NumBridge.
+
+Prime-distribution status: pre-analytic finite model.
+
+Numerology status: formally true under finite-sieve interpretation.
 
 This is about exact finite-sieve candidate distribution, not about actual prime
 distribution.
@@ -113,6 +123,6 @@ distribution.
 ## Remaining Work
 
 The next work is not this finite-wheel theorem; it is either a cleaner
-`Finset`/`Fin` API for reuse or a separate theorem connecting these finite
-wheel counts to analytic prime-distribution hypotheses. No actual-prime
-distribution theorem is claimed here.
+`Finset`/`Fin` API for reuse or BT-0007: finite resonance optimization over
+admissible offset patterns. No actual-prime distribution theorem is claimed
+here.

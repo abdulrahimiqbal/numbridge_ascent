@@ -26,3 +26,12 @@ For layered theorem work, apply labels to the exact layer that was verified.
 BT-0006 now has `PROVED_IN_LEAN` for the finite-sieve wheel distribution
 theorem over arbitrary finite positive pairwise-coprime gate lists. That label
 does not apply to actual prime-distribution claims.
+
+For BT-0006, the correct status is:
+
+```text
+PROVED_IN_LEAN
+finite-sieve / CRT / wheel-shadow distribution
+pre-analytic finite model
+formally true under finite-sieve interpretation
+```

@@ -12,7 +12,8 @@ It does **not** assume numerology is true. It treats numerology-like language as
 - A runnable Python CLI with no required third-party packages.
 - Built-in arithmetic feature functions: primes, residues, digital roots, digit lists, palindromes, factor signatures, persistence, null models.
 - PrimeBridge Resonance Engine for residue shadows, gate deficits, admissibility witnesses, local survival factors, resonance ranking, and empirical prime-pattern counts.
-- Wheel-shadow finite-sieve distribution checks, a reusable Lean CRT/count theorem, arbitrary-pattern 6-/30-wheel Lean product formulas, and a formal branch-truth taxonomy for interpreted numerology claims.
+- Wheel-shadow finite-sieve distribution checks, a reusable Lean CRT/count theorem, the arbitrary gate-list BT-0006 Lean theorem, and a formal branch-truth taxonomy for interpreted numerology claims.
+- BT-0007 finite resonance optimization: a two-point bounded theorem and broad all-`k,D,P` exhaustive finite classifier in Lean.
 - Built-in experiments for calibration bridges:
   - digital roots of primes
   - palindromes and divisibility by 11
@@ -160,3 +161,11 @@ pairwise-coprime gate-list finite-wheel theorem is proved in Lean. It does not
 prove the prime k-tuples conjecture; it builds a search-enabling bridge from
 symbolic resonance language to local residue structure used in sieve
 heuristics.
+
+BT-0006 is the first foundational NumBridge theorem breakthrough:
+`resonance through prime gates = exact finite-sieve residue survival` under a
+precise finite-sieve interpretation. The next target is BT-0007, finite
+resonance optimization over admissible patterns. BT-0007 now has its first
+closed Lean theorem for two-point bounded optimization and a broad all-`k,D,P`
+exhaustive finite classifier. Closed-form structural descriptions of maximizer
+families remain open.

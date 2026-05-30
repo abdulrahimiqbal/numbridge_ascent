@@ -183,3 +183,37 @@ NumBridge.resonance_branch_truth_label
 Roadmap target: build a cleaner reusable API around this theorem, then separate
 finite-wheel candidate distribution from any future analytic theorem about
 actual primes.
+
+## PR-0007: Finite resonance optimization
+
+Goal: use BT-0006 to prove finite optimization theorems for the truncated
+resonance score:
+
+```text
+Res_P(H) = prod_{p <= P} (1 - nu_p(H) / p) / (1 - 1 / p)^k
+```
+
+over admissible `k`-offset patterns with constraints such as
+`diameter(H) <= D`.
+
+Status: broad all-`k,D,P` exhaustive finite classifier proved in Lean.
+
+Lean path:
+
+```text
+lean/NumBridge/ResonanceOptimization.lean
+```
+
+Closed theorem names:
+
+```text
+NumBridge.two_point_finite_resonance_score_le_max
+NumBridge.two_point_gateProduct_attains_resonance_max
+NumBridge.bt0007_two_point_bounded_finite_resonance_optimization
+NumBridge.finite_resonance_maximizers_classify
+NumBridge.bt0007_all_k_D_P_finite_resonance_classification
+```
+
+Next proof step: move from exhaustive classifier theorems to closed-form
+structural descriptions of the maximizing families for interesting parameter
+families.
