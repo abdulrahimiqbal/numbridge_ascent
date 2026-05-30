@@ -64,6 +64,11 @@ NumBridge.resonance_branch_truth_label
 
 `OPEN`: the full squarefree product theorem in Lean.
 
+Update 2026-05-30: `lean/NumBridge/WheelProduct.lean` now proves the local
+`p - nu_p(H)` survivor identity for arbitrary finite offset lists, plus exact
+arbitrary-pattern product formulas for the squarefree wheels 6 and 30. The full
+arbitrary squarefree-wheel theorem remains open.
+
 ## Relation To Singular Series And Local Factors
 
 The normalized wheel density:

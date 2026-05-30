@@ -87,3 +87,17 @@ Lean proves concrete wheel facts.
 Methodological update: some numerology branches can be called formally true
 only under explicit interpretations and labels such as `PROVED_IN_LEAN`,
 `COMPUTED_BY_PYTHON`, `HEURISTIC`, and `NOT_PROVEN`.
+
+## 2026-05-30: BT-0006 formalization push
+
+The wheel-shadow theorem moved from named-pattern Lean facts to an
+arbitrary-pattern product layer. Lean now proves that each local gate has
+`p - nu_p(H)` survivors for every finite offset list `H`, and it proves exact
+product formulas for every `H` through the squarefree wheels `6 = 2 * 3` and
+`30 = 2 * 3 * 5`.
+
+Methodological update: the next real formalization breakthrough is now sharply
+isolated. Explicit finite CRT tables work for small wheels; the missing
+mathematical infrastructure is a reusable CRT/cardinality theorem for arbitrary
+squarefree wheels. Do not call the full BT-0006 theorem closed until that table
+is replaced by a general proof.

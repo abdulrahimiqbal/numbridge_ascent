@@ -74,8 +74,10 @@ Symbolic form: resonance and survival through prime gates.
 Mathematical form: exact finite-wheel survivor counts factor as a product of
 local survival counts.
 
-Status: prime-distribution / finite-sieve / bridge theorem. Python verifies the
-product formula for finite wheels; Lean proves concrete wheel-shadow facts.
+Status: prime-distribution / finite-sieve / formalization-progress. Python
+verifies the product formula for finite wheels; Lean proves concrete
+wheel-shadow facts, the local `p - nu_p(H)` count for arbitrary offset lists,
+and arbitrary-pattern product formulas for the 6-wheel and 30-wheel.
 
 Bridge Theorem:
 

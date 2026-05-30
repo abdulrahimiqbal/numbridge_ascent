@@ -148,10 +148,12 @@ Lean paths:
 
 ```text
 lean/NumBridge/WheelShadow.lean
+lean/NumBridge/WheelProduct.lean
 lean/NumBridge/NumerologyBranches.lean
 ```
 
-Status: concrete wheel facts proved; full product theorem open.
+Status: product-layer theorem proved for local gates and the squarefree wheels
+6 and 30; full arbitrary squarefree product theorem open.
 
 Closed theorem names:
 
@@ -159,8 +161,13 @@ Closed theorem names:
 NumBridge.twin_survives_mod_two_three_iff_mod_six_five
 NumBridge.zero_two_four_no_survivor_mod_two_three
 NumBridge.zero_two_six_wheel30_product_count_arithmetic
+NumBridge.local_gate_survivor_count_eq_modulus_sub_shadow
+NumBridge.wheel6_residue_product_formula
+NumBridge.wheel6_residue_product_formula_as_shadow_sub
+NumBridge.wheel30_residue_product_formula
+NumBridge.wheel30_residue_product_formula_as_shadow_sub
 NumBridge.resonance_branch_truth_label
 ```
 
-Roadmap target: prove the full squarefree product theorem using a CRT
-cardinality argument.
+Roadmap target: replace the explicit Boolean CRT tables for 6 and 30 with a
+general CRT/cardinality argument for arbitrary squarefree wheels.

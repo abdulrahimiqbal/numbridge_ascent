@@ -12,7 +12,7 @@ It does **not** assume numerology is true. It treats numerology-like language as
 - A runnable Python CLI with no required third-party packages.
 - Built-in arithmetic feature functions: primes, residues, digital roots, digit lists, palindromes, factor signatures, persistence, null models.
 - PrimeBridge Resonance Engine for residue shadows, gate deficits, admissibility witnesses, local survival factors, resonance ranking, and empirical prime-pattern counts.
-- Wheel-shadow finite-sieve distribution checks and a formal branch-truth taxonomy for interpreted numerology claims.
+- Wheel-shadow finite-sieve distribution checks, arbitrary-pattern 6-/30-wheel Lean product formulas, and a formal branch-truth taxonomy for interpreted numerology claims.
 - Built-in experiments for calibration bridges:
   - digital roots of primes
   - palindromes and divisibility by 11
@@ -152,6 +152,8 @@ A strong bridge becomes one or more of:
 ## Honest current status
 
 This repo now includes closed calibration Lean theorems, a bridge-theorem layer,
-and a PrimeBridge Resonance Engine. It does not prove the prime k-tuples
-conjecture; it builds a search-enabling bridge from symbolic resonance language
-to local residue structure used in sieve heuristics.
+and a PrimeBridge Resonance Engine. BT-0006 now has a Lean product layer for
+local gates and the squarefree wheels 6 and 30, but not yet the full arbitrary
+squarefree-wheel CRT theorem. It does not prove the prime k-tuples conjecture;
+it builds a search-enabling bridge from symbolic resonance language to local
+residue structure used in sieve heuristics.
