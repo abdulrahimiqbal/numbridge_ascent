@@ -120,6 +120,21 @@ def _parse_gates(raw: str) -> list[int]:
     return gates
 
 
+def _parse_base_gates(raw: str) -> list[int]:
+    value = raw
+    if raw.startswith("base="):
+        value = raw.split("=", 1)[1]
+    try:
+        gates = [int(part.strip()) for part in value.split(",") if part.strip()]
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(f"invalid base gate list {raw!r}") from exc
+    if any(g <= 1 for g in gates):
+        raise argparse.ArgumentTypeError("all base gates must be > 1")
+    if not gates:
+        raise argparse.ArgumentTypeError("base gate list must be nonempty")
+    return gates
+
+
 def _parse_named_int(name: str):
     def parse(raw: str) -> int:
         value = raw
@@ -445,6 +460,70 @@ def cmd_bt0010_counterexample_search(args: argparse.Namespace) -> int:
     return 0 if result["holds"] else 1
 
 
+def cmd_bt0011_general_sacrifice(args: argparse.Namespace) -> int:
+    from bridge.general_first_subcritical_sacrifice import verify_general_first_subcritical
+
+    try:
+        result = verify_general_first_subcritical(args.base, args.q)
+    except ValueError as exc:
+        print(f"Rejected: {exc}", file=sys.stderr)
+        return 2
+    print("BT-0011 general first-subcritical sacrifice")
+    print(f"base={result['base_gates']} q={result['q']} gates={result['gates']}")
+    print(f"L={result['L']} B={result['B']} D={result['D']}")
+    print(f"predicted_max_score={result['predicted_max_score']}")
+    print(f"canonical={_format_pattern(list(result['canonical_attainer']))} score={result['canonical_score']}")
+    print(f"exact_bruteforce={result['exact_bruteforce']} checked_patterns={result['checked_patterns']}")
+    if result["max_score"] is not None:
+        print(f"max_score={result['max_score']} structural_count={result['structural_count']}")
+    if result["edge_counterexample"]:
+        print(f"edge_counterexample={result['edge_counterexample']}")
+    print(f"lean_scope={result['lean_scope']}")
+    print(f"holds={result['holds']}")
+    return 0 if result["holds"] else 1
+
+
+def cmd_bt0011_counterexample_search(args: argparse.Namespace) -> int:
+    from bridge.general_first_subcritical_sacrifice import counterexample_search_general_first_subcritical
+
+    try:
+        result = counterexample_search_general_first_subcritical(
+            args.max_gate,
+            args.max_q,
+            args.max_base_len,
+        )
+    except ValueError as exc:
+        print(f"Rejected: {exc}", file=sys.stderr)
+        return 2
+    print("# BT-0011 General First-Subcritical Counterexample Search")
+    print(f"max_gate={result['max_gate']} max_q={result['max_q']} max_base_len={result['max_base_len']}")
+    print(f"checked={result['checked']} rejected={result['rejected']} outside_theorem_cases={result['outside_theorem_cases']}")
+    print(f"counterexample={result['counterexample']}")
+    print(f"holds={result['holds']}")
+    return 0 if result["holds"] else 1
+
+
+def cmd_bt0011_discover_next(args: argparse.Namespace) -> int:
+    from bridge.general_first_subcritical_sacrifice import discover_next_sacrifice_family
+
+    try:
+        result = discover_next_sacrifice_family(args.max_gate, args.max_q, args.max_k)
+    except ValueError as exc:
+        print(f"Rejected: {exc}", file=sys.stderr)
+        return 2
+    print("# BT-0011 Discover Next")
+    print(f"recommended_next_family={result['recommended_next_family']}")
+    print(result["reason"])
+    print(f"search_summary={result['search_summary']}")
+    print("two_gate_candidates:")
+    for row in result["two_gate_candidates"][:10]:
+        print(f"- base={row['base_gates']} q={row['q']} D={row['D']} exact={row['exact_bruteforce']}")
+    print("arbitrary_base_candidates:")
+    for row in result["arbitrary_base_candidates"][:10]:
+        print(f"- base={row['base_gates']} q={row['q']} D={row['D']} exact={row['exact_bruteforce']}")
+    return 0 if result["search_summary"]["holds"] else 1
+
+
 def cmd_branch_truth_report(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = paths.root / "numerology-branches.md"
@@ -570,7 +649,7 @@ def cmd_seek_lean_bridge(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = write_lean_bridge_report(paths)
     print(f"Wrote {path.relative_to(paths.root)}")
-    print("Top recommendation: close BT-0011, the reusable two-offset residue-shadow count lemma.")
+    print("Top recommendation: close the full arbitrary finite base-spine BT-0011 theorem, or isolate the product-factor equality-edge lemma.")
     return 0
 
 
@@ -720,6 +799,23 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("bt0010-counterexample-search", help="Search for BT-0010 counterexamples")
     p.add_argument("--q-max", type=int, required=True)
     p.set_defaults(func=cmd_bt0010_counterexample_search)
+
+    p = sub.add_parser("bt0011-general-sacrifice", help="Verify BT-0011 for a base spine and q")
+    p.add_argument("base", type=_parse_base_gates)
+    p.add_argument("q", type=_parse_named_int("q"))
+    p.set_defaults(func=cmd_bt0011_general_sacrifice)
+
+    p = sub.add_parser("bt0011-counterexample-search", help="Search BT-0011 theorem-range counterexamples")
+    p.add_argument("--max-gate", type=int, required=True)
+    p.add_argument("--max-q", type=int, required=True)
+    p.add_argument("--max-base-len", type=int, required=True)
+    p.set_defaults(func=cmd_bt0011_counterexample_search)
+
+    p = sub.add_parser("bt0011-discover-next", help="Suggest the next first-subcritical sacrifice family")
+    p.add_argument("--max-gate", type=int, required=True)
+    p.add_argument("--max-q", type=int, required=True)
+    p.add_argument("--max-k", type=int, required=True)
+    p.set_defaults(func=cmd_bt0011_discover_next)
 
     p = sub.add_parser("branch-truth-report", help="Print numerology branch truth taxonomy")
     p.set_defaults(func=cmd_branch_truth_report)

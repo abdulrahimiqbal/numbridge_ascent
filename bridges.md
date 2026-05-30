@@ -183,3 +183,28 @@ pattern remains a small isolated lemma.
 Bridge Theorem:
 
 - `BT-0010`: first subcritical sacrifice theorem.
+
+## B-0011: General first-subcritical sacrifice
+
+Symbolic form: in the first subcritical zone, strongest resonance keeps the
+base spine locked and sacrifices exactly one residue at the new gate.
+
+Mathematical form: for arbitrary two-gate base spines `[a,b]`, with
+`q` coprime to `a*b` and `(a - 1)*(b - 1) + 1 <= q`,
+
+```text
+FiniteResonanceNumerator [a,b,q] H
+  <= (a - 1)*(b - 1)*(q - 2)
+```
+
+for every normalized distinct three-point pattern bounded by
+`2*(a*b*q) - 1`, with equality exactly when every offset is divisible by
+`a*b` and `LocalResidueShadowCount q H = 2`.
+
+Status: PROVED_IN_LEAN for the arbitrary two-gate fallback theorem. The full
+arbitrary finite base-spine theorem is still open, with bounded Python checks
+and equality-edge search recorded for the requested window.
+
+Bridge Theorem:
+
+- `BT-0011`: general first-subcritical sacrifice theorem.

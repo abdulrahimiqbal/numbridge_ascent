@@ -141,3 +141,15 @@ exactly when the pattern is divisible by `6` and has two q-residue shadows.
 
 This keeps the branch finite and structural: it is still about local
 finite-wheel resonance, not actual prime distribution.
+
+## General Base-Spine Layer
+
+BT-0011 pushes the one-gate-sacrifice schema beyond `[2,3]`. Lean proves the
+arbitrary two-gate fallback theorem for `[a,b,q]`: under the expected
+coprimality and threshold assumptions, the first-subcritical maximum is
+`(a - 1)*(b - 1)*(q - 2)`, attained exactly by `a*b`-locked patterns with two
+q-shadows.
+
+The arbitrary finite base-spine theorem remains the next Lean target. Python
+now checks the finite-list version and searches for equality-edge failures in
+bounded windows.

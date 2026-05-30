@@ -146,3 +146,22 @@ LocalResidueShadowCount q H = 2.
 This is the first reusable one-gate-sacrifice theorem: full `[2,3,q]` lattice
 lock cannot fit, so maximal subcritical resonance keeps `[2,3]` and sacrifices
 the q-gate minimally.
+
+## General First Subcritical Sacrifice
+
+BT-0011 closes the arbitrary two-gate base-spine fallback. For pairwise-coprime
+base gates `[a,b]`, a new gate `q` coprime to `a*b`, and
+`(a - 1)*(b - 1) + 1 <= q`, Lean proves:
+
+```text
+FiniteResonanceNumerator [a,b,q] H
+  <= (a - 1)*(b - 1)*(q - 2)
+```
+
+for normalized distinct three-point patterns bounded by `2*(a*b*q) - 1`.
+Equality holds exactly when the pattern is locked modulo `a*b` and has exactly
+two q-residue shadows.
+
+The full arbitrary finite base-spine theorem is still open. Python checks the
+finite-list version in bounded windows and searches the only equality edge
+where the crude product-drop argument could fail.

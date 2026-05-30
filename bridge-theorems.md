@@ -20,6 +20,7 @@ structure behind a symbolic phrase.
 | BT-0008 | Resonance lattice maximizer theorem | strongest resonance, gate-product alignment, lattice lock | absolute finite-resonance maximizers lie on the gate-product lattice | upper bound and equality characterization proved; reverse threshold open | finite-sieve structural maximizer |
 | BT-0009 | Subcritical resonance theorem | subcritical resonance, one gate sacrifice, partial lattice lock | below the full lattice threshold, best patterns keep the 6-lattice and sacrifice the 5-gate minimally | first subcritical `[2,3,5]`, `k=3`, `D=59` theorem proved | finite-sieve subcritical structural theorem |
 | BT-0010 | First subcritical sacrifice theorem | first subcritical zone, one gate sacrifice | for `[2,3,q]`, best first-subcritical patterns keep the 6-lattice and occupy exactly two q-residues | parametric upper bound and equality iff proved | finite-sieve parametric structural theorem |
+| BT-0011 | General first-subcritical sacrifice theorem | base-spine resonance, one gate sacrifice | for arbitrary two-gate base spines `[a,b]`, best first-subcritical patterns lock `a*b` and occupy exactly two q-residues | two-gate fallback theorem proved; arbitrary finite base spine open | finite-sieve two-gate structural theorem |
 
 ## Current Lean Surface
 
@@ -83,6 +84,10 @@ NumBridge.first_subcritical_upper_bound_two_three_q
 NumBridge.first_subcritical_equality_forces_six_lock_and_q_sacrifice
 NumBridge.first_subcritical_six_lock_and_q_sacrifice_attains
 NumBridge.bt0010_first_subcritical_sacrifice_theorem
+NumBridge.two_gate_first_subcritical_upper_bound
+NumBridge.two_gate_first_subcritical_equality_forces_lock_and_q_sacrifice
+NumBridge.two_gate_first_subcritical_lock_and_q_sacrifice_attains
+NumBridge.bt0011_two_gate_first_subcritical_sacrifice_theorem
 ```
 
 ## Honest Status
@@ -150,3 +155,11 @@ Lean proves the first-subcritical `[2,3,q]` upper bound
 q-shadows. The direct Lean residue-count proof that `[0,6,6q]` has exactly two
 q-shadows is still isolated as a small open lemma; Python verifies the
 canonical attainer and finds no counterexample in the requested q range.
+
+BT-0011 closes the requested fallback theorem for arbitrary two-gate base
+spines. For `2 <= a,b,q`, `Nat.Coprime a b`, `Nat.Coprime q (a*b)`, and
+`(a - 1)*(b - 1) + 1 <= q`, Lean proves the first-subcritical upper bound
+`(a - 1)*(b - 1)*(q - 2)` and equality iff `AllOffsetsDivisibleBy (a*b) H`
+and `LocalResidueShadowCount q H = 2`. The full arbitrary finite base-spine
+theorem remains open Lean work; Python performs bounded arbitrary-base checks
+and an equality-edge counterexample search.

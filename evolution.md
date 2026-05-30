@@ -236,3 +236,23 @@ residue classes modulo `q`.
 Methodological update: the subcritical direction remains alive. The next proof
 polish is a reusable two-offset residue-shadow count, not another bounded
 search.
+
+## 2026-05-30: BT-0011 two-gate base-spine fallback closed
+
+The full arbitrary finite base-spine theorem did not close in this pass, but
+the requested fallback did. Lean now proves:
+
+```text
+NumBridge.bt0011_two_gate_first_subcritical_sacrifice_theorem
+```
+
+For arbitrary pairwise-coprime base gates `[a,b]`, with `q` coprime to `a*b`
+and `(a - 1)*(b - 1) + 1 <= q`, every normalized distinct three-point pattern
+bounded by `2*(a*b*q) - 1` has score at most
+`(a - 1)*(b - 1)*(q - 2)`. Equality holds exactly when the pattern is locked
+to the `a*b` lattice and occupies exactly two residue classes modulo `q`.
+
+Methodological update: this is a real structural generalization of BT-0010,
+but not the full arbitrary-base theorem. Do not label BT-0011 as fully closed
+for finite base lists until the product-factor equality edge is proved by a
+general induction.

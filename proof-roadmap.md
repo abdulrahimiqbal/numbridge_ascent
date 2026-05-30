@@ -330,7 +330,63 @@ Open proof polish: prove directly in Lean that the concrete canonical pattern
 requested scans, and Lean has a conditional attainer theorem once that local
 count is supplied.
 
-## PR-0011: Two-offset residue-shadow count
+## PR-0011: General first-subcritical sacrifice
+
+Goal: generalize BT-0010 beyond the fixed base spine `[2,3]`.
+
+Status: arbitrary two-gate fallback theorem proved in Lean; full arbitrary
+finite base-spine theorem remains open.
+
+Lean path:
+
+```text
+lean/NumBridge/GeneralFirstSubcriticalSacrifice.lean
+```
+
+Closed theorem names:
+
+```text
+NumBridge.no_three_distinct_bounded_twoM_minus_one_all_dvd
+NumBridge.q_gt_left_of_two_gate_threshold
+NumBridge.q_gt_right_of_two_gate_threshold
+NumBridge.dropped_left_two_gate_product_lt
+NumBridge.dropped_right_two_gate_product_lt
+NumBridge.two_gate_first_subcritical_base_lock_forces_q_shadow_ge_two
+NumBridge.two_gate_local_q_le_q_minus_two_of_base_lock
+NumBridge.two_gate_base_local_factor_eq_of_lock
+NumBridge.two_gate_lock_of_base_local_factors_eq
+NumBridge.two_gate_not_locked_score_drop
+NumBridge.two_gate_first_subcritical_upper_bound
+NumBridge.two_gate_first_subcritical_equality_forces_lock_and_q_sacrifice
+NumBridge.two_gate_first_subcritical_lock_and_q_sacrifice_attains
+NumBridge.bt0011_two_gate_first_subcritical_sacrifice_theorem
+```
+
+Lean-proved fallback theorem:
+
+```text
+2 <= a, 2 <= b, 2 <= q
+Nat.Coprime a b
+Nat.Coprime q (a*b)
+(a - 1)*(b - 1) + 1 <= q
+D = 2*(a*b*q) - 1
+FiniteResonanceNumerator [a,b,q] H
+  <= (a - 1)*(b - 1)*(q - 2)
+```
+
+Equality holds iff:
+
+```text
+AllOffsetsDivisibleBy (a*b) H
+and
+LocalResidueShadowCount q H = 2
+```
+
+Next proof step: prove the full arbitrary finite base-spine theorem. The
+missing ingredient is a reusable product-factor drop/equality lemma strong
+enough to rule out non-locked equality in the edge case `q = B + 1`.
+
+## PR-0012: Two-offset residue-shadow count
 
 Goal: remove the remaining local counting friction.
 

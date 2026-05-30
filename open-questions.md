@@ -7,5 +7,7 @@
 5. Can the system discover a bridge not already obvious from elementary divisibility tests?
 6. Can Lean prove the reusable two-offset shadow lemma
    `LocalResidueShadowCount q [0,d] = 2` when `d % q != 0`?
-7. Does the one-gate-sacrifice theorem extend from `[2,3,q]` to longer gate
-   prefixes and higher-cardinality first-subcritical windows?
+7. Can the BT-0011 two-gate sacrifice theorem be lifted to arbitrary finite
+   base spines by a reusable product-factor equality/drop lemma?
+8. Does the one-gate-sacrifice theorem extend from three-point patterns to
+   higher-cardinality first-subcritical windows?

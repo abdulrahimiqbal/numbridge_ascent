@@ -100,13 +100,19 @@ def build_lean_bridge_report(paths: RepoPaths) -> str:
         "BT-0010 proves the [2,3,q] first-subcritical theorem: max score 2*(q-2) iff the pattern is locked modulo 6 and occupies exactly two q-residues.",
         "```",
         "",
+        "Closed two-gate base-spine fallback:",
+        "",
+        "```text",
+        "BT-0011 proves the [a,b,q] first-subcritical theorem: max score (a-1)*(b-1)*(q-2) iff the pattern is locked modulo a*b and occupies exactly two q-residues.",
+        "```",
+        "",
         "Next non-calibration theorem target:",
         "",
         "```text",
-        "BT-0011: prove the reusable two-offset residue-shadow count LocalResidueShadowCount q [0,d] = 2 when d % q != 0.",
+        "BT-0012: prove the full arbitrary finite base-spine sacrifice theorem, or first close the reusable two-offset residue-shadow count LocalResidueShadowCount q [0,d] = 2 when d % q != 0.",
         "```",
         "",
-        "The prime digital-root theorem is shallow-real; BT-0006, BT-0008, BT-0009, and BT-0010 are finite-sieve / combinatorics results, not actual prime-distribution theorems.",
+        "The prime digital-root theorem is shallow-real; BT-0006, BT-0008, BT-0009, BT-0010, and BT-0011 are finite-sieve / combinatorics results, not actual prime-distribution theorems.",
     ])
     return "\n".join(lines) + "\n"
 

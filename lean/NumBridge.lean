@@ -11,4 +11,5 @@ import NumBridge.ResonanceOptimization
 import NumBridge.ResonanceLatticeMaximizer
 import NumBridge.SubcriticalResonance
 import NumBridge.FirstSubcriticalSacrifice
+import NumBridge.GeneralFirstSubcriticalSacrifice
 import NumBridge.NumerologyBranches

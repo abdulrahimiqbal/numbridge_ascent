@@ -66,3 +66,13 @@ score 2*(q-2) iff 6-lattice lock and exactly two q-shadows
 canonical [0,6,6q] attainer COMPUTED_BY_PYTHON in requested scans
 actual prime-distribution consequences NOT_PROVEN
 ```
+
+For BT-0011, the correct status is:
+
+```text
+PROVED_IN_LEAN for the arbitrary two-gate fallback theorem
+COMPUTED_BY_PYTHON for bounded arbitrary-base checks and equality-edge search
+OPEN for the full arbitrary finite base-spine theorem
+finite-sieve / first-subcritical sacrifice
+actual prime-distribution consequences NOT_PROVEN
+```

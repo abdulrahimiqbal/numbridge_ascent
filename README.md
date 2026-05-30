@@ -14,6 +14,7 @@ It does **not** assume numerology is true. It treats numerology-like language as
 - PrimeBridge Resonance Engine for residue shadows, gate deficits, admissibility witnesses, local survival factors, resonance ranking, and empirical prime-pattern counts.
 - Wheel-shadow finite-sieve distribution checks, a reusable Lean CRT/count theorem, the arbitrary gate-list BT-0006 Lean theorem, and a formal branch-truth taxonomy for interpreted numerology claims.
 - BT-0007 finite resonance optimization: a two-point bounded theorem and broad all-`k,D,P` exhaustive finite classifier in Lean.
+- BT-0011 first-subcritical sacrifice support: a Lean theorem for arbitrary two-gate base spines and Python checks for the arbitrary finite base-spine target.
 - Built-in experiments for calibration bridges:
   - digital roots of primes
   - palindromes and divisibility by 11
@@ -36,6 +37,7 @@ python bridge.py prime-pattern H=0,2,6
 python bridge.py wheel-shadow H=0,2,6 W=30
 python bridge.py wheel-theorem-check H=0,2,6 primes=2,3,5
 python bridge.py wheel-product-general H=0,2,6 gates=2,3,5
+python bridge.py bt0011-general-sacrifice base=2,5 q=7
 python bridge.py rank-resonance --k 4 --diameter 50 --prime-bound 31
 python bridge.py report B-0002
 ```
@@ -168,4 +170,7 @@ precise finite-sieve interpretation. The next target is BT-0007, finite
 resonance optimization over admissible patterns. BT-0007 now has its first
 closed Lean theorem for two-point bounded optimization and a broad all-`k,D,P`
 exhaustive finite classifier. Closed-form structural descriptions of maximizer
-families remain open.
+families remain open. BT-0011 now closes the arbitrary two-gate
+first-subcritical sacrifice fallback theorem in Lean; the full arbitrary finite
+base-spine theorem remains open and is tracked by Python counterexample
+searches.
