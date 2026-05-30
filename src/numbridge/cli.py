@@ -107,6 +107,19 @@ def _parse_primes(raw: str) -> list[int]:
     return primes
 
 
+def _parse_gates(raw: str) -> list[int]:
+    value = raw
+    if raw.startswith("gates="):
+        value = raw.split("=", 1)[1]
+    try:
+        gates = [int(part.strip()) for part in value.split(",") if part.strip()]
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(f"invalid gate list {raw!r}") from exc
+    if any(g <= 1 for g in gates):
+        raise argparse.ArgumentTypeError("all gates must be > 1")
+    return gates
+
+
 def _format_pattern(pattern: list[int]) -> str:
     return "[" + ",".join(str(h) for h in pattern) + "]"
 
@@ -242,6 +255,49 @@ def cmd_wheel_theorem_check(args: argparse.Namespace) -> int:
     return 0 if check["holds"] else 1
 
 
+def cmd_wheel_product_general(args: argparse.Namespace) -> int:
+    from bridge.wheel_product_general import verify_general_wheel_product
+
+    try:
+        check = verify_general_wheel_product(args.gates, args.H)
+    except ValueError as exc:
+        print(f"Rejected: {exc}", file=sys.stderr)
+        return 2
+    print(f"Pattern: {_format_pattern(list(check['pattern']))}")
+    print(f"Gates: {check['gates']} W={check['W']}")
+    print(f"Pairwise coprime: {check['pairwise_coprime']}")
+    print(f"Survivor count: {check['survivor_count']}")
+    print(f"Product local survivor counts: {check['product_local_survivor_counts']}")
+    print(f"Product formula holds: {check['holds']}")
+    return 0 if check["holds"] else 1
+
+
+def cmd_wheel_product_counterexample_search(args: argparse.Namespace) -> int:
+    from bridge.wheel_product_general import search_for_counterexample_to_wheel_product
+
+    result = search_for_counterexample_to_wheel_product(
+        args.max_gate,
+        args.max_offset,
+        args.max_len,
+    )
+    print("# Wheel Product Counterexample Search")
+    print(f"Checked pairwise-coprime cases: {result['checked_coprime']}")
+    print(f"Checked non-coprime cases: {result['checked_non_coprime']}")
+    coprime_counterexample = result["coprime_counterexample"]
+    if coprime_counterexample:
+        print("Pairwise-coprime counterexample found:")
+        print(coprime_counterexample)
+        return 1
+    print("Pairwise-coprime counterexample found: none")
+    non_coprime_counterexample = result["non_coprime_counterexample"]
+    if non_coprime_counterexample:
+        print("First non-coprime failure:")
+        print(non_coprime_counterexample)
+    else:
+        print("Non-coprime failure found: none in search window")
+    return 0
+
+
 def cmd_branch_truth_report(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = paths.root / "numerology-branches.md"
@@ -367,7 +423,7 @@ def cmd_seek_lean_bridge(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = write_lean_bridge_report(paths)
     print(f"Wrote {path.relative_to(paths.root)}")
-    print("Top recommendation: extend B-0006 with a full Lean squarefree wheel product theorem.")
+    print("Top recommendation: extend B-0006 from the two-modulus CRT step to the full Lean squarefree wheel product theorem.")
     return 0
 
 
@@ -471,6 +527,17 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("H", type=_parse_offsets)
     p.add_argument("primes", type=_parse_primes)
     p.set_defaults(func=cmd_wheel_theorem_check)
+
+    p = sub.add_parser("wheel-product-general", help="Check the general pairwise-coprime wheel product formula")
+    p.add_argument("H", type=_parse_offsets)
+    p.add_argument("gates", type=_parse_gates)
+    p.set_defaults(func=cmd_wheel_product_general)
+
+    p = sub.add_parser("wheel-product-counterexample-search", help="Search for finite wheel product counterexamples")
+    p.add_argument("--max-gate", type=int, required=True)
+    p.add_argument("--max-offset", type=int, required=True)
+    p.add_argument("--max-len", type=int, default=3)
+    p.set_defaults(func=cmd_wheel_product_counterexample_search)
 
     p = sub.add_parser("branch-truth-report", help="Print numerology branch truth taxonomy")
     p.set_defaults(func=cmd_branch_truth_report)

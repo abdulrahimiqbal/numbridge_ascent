@@ -20,6 +20,9 @@ The current micro-targets are intentionally small and standard-library-only:
 - `NumBridge.resonance_cover_forces_sieve_hit`
 - `NumBridge.resonance_zero_two_six_survives_mod_three`
 - `NumBridge.local_gate_survivor_count_eq_modulus_sub_shadow`
+- `NumBridge.crt_count_product_two_moduli`
+- `NumBridge.wheel6_residue_product_formula_via_crt`
+- `NumBridge.wheel30_residue_product_formula_via_crt`
 - `NumBridge.wheel30_residue_product_formula_as_shadow_sub`
 
 `NumBridge.four_digit_mirror_divisible_by_11` is a closed
@@ -40,6 +43,9 @@ Prime constellation sieve gates live in `NumBridge.PrimeConstellations`.
 Residue-shadow and resonance facts live in `NumBridge.ResidueShadow` and
 `NumBridge.PrimePatternResonance`.
 
-The BT-0006 wheel product layer lives in `NumBridge.WheelProduct`. It proves
-the local `p - nu_p(H)` survivor count for arbitrary finite offset lists and
-exact arbitrary-pattern product formulas for the squarefree wheels 6 and 30.
+The BT-0006 wheel product layer lives in `NumBridge.WheelProduct` and
+`NumBridge.WheelProductGeneral`. It proves the local `p - nu_p(H)` survivor
+count for arbitrary finite offset lists, a reusable two-modulus CRT/count
+theorem for coprime moduli, and exact arbitrary-pattern product formulas for
+the squarefree wheels 6 and 30 via that theorem. The full arbitrary gate-list
+squarefree theorem remains open.

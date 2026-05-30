@@ -6,4 +6,5 @@ import NumBridge.ResidueShadow
 import NumBridge.PrimePatternResonance
 import NumBridge.WheelShadow
 import NumBridge.WheelProduct
+import NumBridge.WheelProductGeneral
 import NumBridge.NumerologyBranches

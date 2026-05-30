@@ -30,6 +30,7 @@ src/bridge/prime_patterns.py
 src/bridge/residue_shadow.py
 src/bridge/resonance.py
 src/bridge/search_prime_patterns.py
+src/bridge/wheel_product_general.py
 ```
 
 CLI examples:
@@ -40,6 +41,8 @@ python3 bridge.py prime-pattern H=0,2,6
 python3 bridge.py search-admissible --k 3 --diameter 20
 python3 bridge.py rank-resonance --k 4 --diameter 50 --prime-bound 31
 python3 bridge.py primebridge-report --k 3 --diameter 30 --N 100000
+python3 bridge.py wheel-product-general H=0,2,6 gates=2,3,5
+python3 bridge.py wheel-product-counterexample-search --max-gate 12 --max-offset 20
 ```
 
 ## Honest Boundary
@@ -58,4 +61,7 @@ R_W(H) = {a mod W : every a+h is coprime to W}
 ```
 
 The repo checks this product formula by brute force for finite wheels and uses
-it as the rigorous distribution layer underneath resonance ranking.
+it as the rigorous distribution layer underneath resonance ranking. Lean proves
+the central two-modulus CRT/count theorem and uses it to replace the wheel 6
+and wheel 30 table proofs; the arbitrary squarefree gate-list theorem is still
+open.

@@ -101,3 +101,19 @@ isolated. Explicit finite CRT tables work for small wheels; the missing
 mathematical infrastructure is a reusable CRT/cardinality theorem for arbitrary
 squarefree wheels. Do not call the full BT-0006 theorem closed until that table
 is replaced by a general proof.
+
+## 2026-05-30: BT-0006 central CRT step
+
+The explicit 6- and 30-wheel tables now have replacement proofs from a reusable
+two-modulus CRT/cardinality theorem:
+
+```text
+NumBridge.crt_count_product_two_moduli
+NumBridge.wheel6_residue_product_formula_via_crt
+NumBridge.wheel30_residue_product_formula_via_crt
+```
+
+Methodological update: a bridge theorem can make a real project breakthrough
+without closing the largest possible statement. The honest status is now:
+central CRT step proved in Lean, arbitrary squarefree gate-list induction still
+open, finite-sieve distribution only.

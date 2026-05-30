@@ -70,6 +70,8 @@ Lean/Python evidence:
 NumBridge.resonance_cover_forces_sieve_hit
 NumBridge.twin_survives_mod_two_three_iff_mod_six_five
 NumBridge.zero_two_four_no_survivor_mod_two_three
+NumBridge.crt_count_product_two_moduli
+NumBridge.wheel30_residue_product_formula_via_crt
 ```
 
 Python evidence:
@@ -77,14 +79,17 @@ Python evidence:
 ```text
 exact_wheel_distribution_holds
 wheel_survivor_count
+wheel_survivor_count_general
 product_local_survival_count
+product_local_survivor_counts
 compare_patterns_by_wheel_distribution
 ```
 
 Truth label: `FORMALLY_TRUE_AS_FINITE_SIEVE_DISTRIBUTION`.
 
 Claim labels: `INTERPRETIVE_FORMALIZATION`, `PROVED_IN_LEAN`,
-`COMPUTED_BY_PYTHON`, `HEURISTIC` for resonance ranking.
+`COMPUTED_BY_PYTHON`, `HEURISTIC` for resonance ranking, and `OPEN` for the
+full arbitrary squarefree gate-list Lean theorem.
 
 ## Not Proven
 

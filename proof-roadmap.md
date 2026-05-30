@@ -149,11 +149,13 @@ Lean paths:
 ```text
 lean/NumBridge/WheelShadow.lean
 lean/NumBridge/WheelProduct.lean
+lean/NumBridge/WheelProductGeneral.lean
 lean/NumBridge/NumerologyBranches.lean
 ```
 
 Status: product-layer theorem proved for local gates and the squarefree wheels
-6 and 30; full arbitrary squarefree product theorem open.
+6 and 30; reusable two-modulus CRT/cardinality theorem proved; full arbitrary
+squarefree gate-list product theorem open.
 
 Closed theorem names:
 
@@ -166,8 +168,16 @@ NumBridge.wheel6_residue_product_formula
 NumBridge.wheel6_residue_product_formula_as_shadow_sub
 NumBridge.wheel30_residue_product_formula
 NumBridge.wheel30_residue_product_formula_as_shadow_sub
+NumBridge.crt_count_product_two_moduli
+NumBridge.wheel_product_step
+NumBridge.wheel6_residue_product_formula_via_crt
+NumBridge.wheel30_residue_product_formula_via_crt
+NumBridge.bt0006_two_moduli_wheel_shadow_distribution
+NumBridge.bt0006_two_moduli_wheel_shadow_distribution_as_shadow_sub
 NumBridge.resonance_branch_truth_label
 ```
 
-Roadmap target: replace the explicit Boolean CRT tables for 6 and 30 with a
-general CRT/cardinality argument for arbitrary squarefree wheels.
+Roadmap target: turn `crt_count_product_two_moduli` into an induction over
+positive pairwise-coprime gate lists, producing
+`wheel_survivor_count_product_general` and the corresponding `p - nu_p(H)`
+theorem for arbitrary squarefree wheels.

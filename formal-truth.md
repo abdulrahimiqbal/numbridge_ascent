@@ -21,3 +21,8 @@ interpretation.
 
 Do not promote an interpretive bridge into a mystical claim. A branch is
 formally true only under its explicit mathematical interpretation.
+
+For layered theorem work, apply labels to the exact layer that was verified.
+For example, BT-0006 can simultaneously have `PROVED_IN_LEAN` for its
+two-modulus CRT/cardinality theorem and `OPEN` for the full arbitrary
+squarefree gate-list theorem.

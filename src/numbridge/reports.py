@@ -76,13 +76,19 @@ def build_lean_bridge_report(paths: RepoPaths) -> str:
         "|R_W(H)| = prod_{p | W} (p - nu_p(H))",
         "```",
         "",
+        "Current Lean breakthrough:",
+        "",
+        "```text",
+        "crt_count_product_two_moduli proves the reusable two-modulus CRT/count factorization; wheel 6 and 30 now have replacement proofs via that theorem.",
+        "```",
+        "",
         "Next non-calibration theorem target:",
         "",
         "```text",
-        "Prove the full squarefree wheel-shadow product theorem in Lean via a CRT/cardinality argument.",
+        "Turn the two-modulus CRT/count theorem into an induction over arbitrary positive pairwise-coprime gate lists.",
         "```",
         "",
-        "The prime digital-root theorem is shallow-real; BT-0006 is prime-distribution / finite-sieve because it gives exact distribution for wheel candidates, not actual primes.",
+        "The prime digital-root theorem is shallow-real; BT-0006 is finite-sieve / CRT formalization because it gives exact distribution for wheel candidates, not actual primes.",
     ])
     return "\n".join(lines) + "\n"
 
