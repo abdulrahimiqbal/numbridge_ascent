@@ -256,3 +256,22 @@ Methodological update: this is a real structural generalization of BT-0010,
 but not the full arbitrary-base theorem. Do not label BT-0011 as fully closed
 for finite base lists until the product-factor equality edge is proved by a
 general induction.
+
+## 2026-05-30: BT-0012 actual-prime wheel bridge landed
+
+The full arbitrary finite base-spine sacrifice theorem remained blocked by the
+product-factor equality edge, so the project pivoted as instructed. Lean now
+proves:
+
+```text
+NumBridge.bt0012_prime_tuple_wheel_upper_bound
+```
+
+If a Boolean enumerator only accepts actual prime tuple translates above all
+finite gates, its count up to `N` is bounded by the finite wheel survivor count
+times `N / W + 1`, where `W = gateProduct gates`.
+
+Methodological update: the project has crossed from finite candidate residues
+to an elementary actual-prime count bound. This is still not analytic sieve
+theory; the next serious theorem must be a Selberg-sieve-style upper bound or
+another explicit prime-distribution estimate.

@@ -165,3 +165,24 @@ two q-residue shadows.
 The full arbitrary finite base-spine theorem is still open. Python checks the
 finite-list version in bounded windows and searches the only equality edge
 where the crude product-drop argument could fail.
+
+## Prime Wheel Upper Bound
+
+BT-0012 is the first elementary actual-prime count bridge. If `n + h` is prime
+for every offset `h` and those primes are all larger than the finite gate
+moduli, then `n` must lie in a wheel-survivor residue modulo:
+
+```text
+W = gateProduct gates
+```
+
+Lean proves that any Boolean enumerator sound for such prime tuple translates
+has count up to `N` at most:
+
+```text
+WheelSurvivorCountGeneral gates H * (N / W + 1)
+```
+
+This is deliberately elementary. It converts finite wheel survival into an
+actual-prime obstruction/count bound, but it does not estimate primes inside
+the surviving residues.

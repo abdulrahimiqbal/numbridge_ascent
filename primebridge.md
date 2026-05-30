@@ -153,3 +153,17 @@ q-shadows.
 The arbitrary finite base-spine theorem remains the next Lean target. Python
 now checks the finite-list version and searches for equality-edge failures in
 bounded windows.
+
+## Actual-Prime Wheel Bound
+
+BT-0012 adds the first actual-prime count bridge. Lean proves that actual prime
+tuple translates above the finite gates must land in wheel-survivor residues,
+and that any sound Boolean enumerator of such translates is bounded by:
+
+```text
+WheelSurvivorCountGeneral gates H * (N / gateProduct gates + 1)
+```
+
+This is elementary but important: it connects the finite wheel layer to actual
+prime tuples. It is not yet Selberg sieve, Bombieri-Vinogradov, Maynard-Tao,
+or Hardy-Littlewood.

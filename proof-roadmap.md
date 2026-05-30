@@ -386,9 +386,47 @@ Next proof step: prove the full arbitrary finite base-spine theorem. The
 missing ingredient is a reusable product-factor drop/equality lemma strong
 enough to rule out non-locked equality in the edge case `q = B + 1`.
 
-## PR-0012: Two-offset residue-shadow count
+## PR-0012: Prime wheel upper bound
 
-Goal: remove the remaining local counting friction.
+Goal: pivot from finite-wheel candidate structure to an elementary actual-prime
+counting bridge.
+
+Status: elementary actual-prime wheel upper bound proved in Lean.
+
+Lean path:
+
+```text
+lean/NumBridge/PrimeWheelUpperBound.lean
+```
+
+Closed theorem names:
+
+```text
+NumBridge.prime_translate_avoids_each_gate_residue
+NumBridge.prime_tuple_translate_implies_wheel_survivor
+NumBridge.prime_tuple_translate_implies_wheel_survivor_bool
+NumBridge.count_complete_wheel_blocks_le
+NumBridge.predicate_count_le_wheel_survivor_blocks
+NumBridge.bt0012_prime_tuple_wheel_upper_bound
+```
+
+Theorem:
+
+```text
+If P n = true only when n is an actual prime tuple translate above all gates,
+then:
+
+(List.range (N + 1)).countP P
+  <= WheelSurvivorCountGeneral gates H * (N / gateProduct gates + 1)
+```
+
+Next proof step: formulate a genuine analytic sieve target, such as a
+Selberg-sieve upper bound for prime tuple translates using local obstruction
+data. Do not claim Hardy-Littlewood or a prime tuple asymptotic.
+
+## PR-0013: Two-offset residue-shadow count
+
+Goal: remove remaining local counting friction.
 
 Target:
 
@@ -396,6 +434,3 @@ Target:
 If 0 < q and d % q != 0,
 then LocalResidueShadowCount q [0,d] = 2.
 ```
-
-This lemma closes the unconditional canonical attainer for BT-0010 and should
-support later sacrifice theorems.

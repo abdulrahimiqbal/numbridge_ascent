@@ -52,6 +52,8 @@ def default_score_for_bridge(bridge_id: str) -> BridgeScore:
         return BridgeScore(9, 7, 8, 8, 8, 8, 8, 9, 7)
     if bridge_id == "B-0011":
         return BridgeScore(9, 7, 8, 8, 7, 7, 8, 9, 5)
+    if bridge_id == "B-0012":
+        return BridgeScore(9, 7, 8, 8, 6, 8, 8, 8, 4)
     if bridge_id == "B-0001":
         return BridgeScore(7, 6, 3, 5, 1, 5, 7, 4, 1)
     return BridgeScore(5, 3, 2, 2, 3, 5, 2, 4, 3)

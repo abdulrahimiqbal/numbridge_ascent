@@ -15,6 +15,7 @@ It does **not** assume numerology is true. It treats numerology-like language as
 - Wheel-shadow finite-sieve distribution checks, a reusable Lean CRT/count theorem, the arbitrary gate-list BT-0006 Lean theorem, and a formal branch-truth taxonomy for interpreted numerology claims.
 - BT-0007 finite resonance optimization: a two-point bounded theorem and broad all-`k,D,P` exhaustive finite classifier in Lean.
 - BT-0011 first-subcritical sacrifice support: a Lean theorem for arbitrary two-gate base spines and Python checks for the arbitrary finite base-spine target.
+- BT-0012 actual-prime wheel bridge: an elementary Lean upper bound for sound prime-tuple enumerators using finite wheel survivor counts.
 - Built-in experiments for calibration bridges:
   - digital roots of primes
   - palindromes and divisibility by 11
@@ -38,6 +39,7 @@ python bridge.py wheel-shadow H=0,2,6 W=30
 python bridge.py wheel-theorem-check H=0,2,6 primes=2,3,5
 python bridge.py wheel-product-general H=0,2,6 gates=2,3,5
 python bridge.py bt0011-general-sacrifice base=2,5 q=7
+python bridge.py bt0012-prime-wheel-bound H=0,2,6 gates=2,3,5 N=100000
 python bridge.py rank-resonance --k 4 --diameter 50 --prime-bound 31
 python bridge.py report B-0002
 ```
@@ -173,4 +175,6 @@ exhaustive finite classifier. Closed-form structural descriptions of maximizer
 families remain open. BT-0011 now closes the arbitrary two-gate
 first-subcritical sacrifice fallback theorem in Lean; the full arbitrary finite
 base-spine theorem remains open and is tracked by Python counterexample
-searches.
+searches. BT-0012 pivots to an elementary actual-prime wheel upper bound:
+sound prime-tuple enumerators are bounded by finite wheel survivor counts times
+the number of wheel blocks. This is still not analytic prime distribution.

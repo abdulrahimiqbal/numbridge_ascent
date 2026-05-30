@@ -11,3 +11,5 @@
    base spines by a reusable product-factor equality/drop lemma?
 8. Does the one-gate-sacrifice theorem extend from three-point patterns to
    higher-cardinality first-subcritical windows?
+9. Can the elementary BT-0012 wheel upper bound be upgraded to a Selberg-sieve
+   upper bound with explicit local obstruction constants?

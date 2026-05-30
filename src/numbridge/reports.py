@@ -106,13 +106,19 @@ def build_lean_bridge_report(paths: RepoPaths) -> str:
         "BT-0011 proves the [a,b,q] first-subcritical theorem: max score (a-1)*(b-1)*(q-2) iff the pattern is locked modulo a*b and occupies exactly two q-residues.",
         "```",
         "",
+        "Closed elementary actual-prime wheel bound:",
+        "",
+        "```text",
+        "BT-0012 proves that sound actual-prime tuple enumerators are bounded by WheelSurvivorCountGeneral gates H * (N / gateProduct gates + 1).",
+        "```",
+        "",
         "Next non-calibration theorem target:",
         "",
         "```text",
-        "BT-0012: prove the full arbitrary finite base-spine sacrifice theorem, or first close the reusable two-offset residue-shadow count LocalResidueShadowCount q [0,d] = 2 when d % q != 0.",
+        "BT-0013: formulate a Selberg-sieve upper-bound bridge with explicit local obstruction constants, while keeping the arbitrary base-spine theorem open.",
         "```",
         "",
-        "The prime digital-root theorem is shallow-real; BT-0006, BT-0008, BT-0009, BT-0010, and BT-0011 are finite-sieve / combinatorics results, not actual prime-distribution theorems.",
+        "The prime digital-root theorem is shallow-real; BT-0006, BT-0008, BT-0009, BT-0010, and BT-0011 are finite-sieve / combinatorics results. BT-0012 is an elementary actual-prime count bound, not an analytic prime-distribution theorem.",
     ])
     return "\n".join(lines) + "\n"
 

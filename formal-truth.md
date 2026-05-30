@@ -76,3 +76,13 @@ OPEN for the full arbitrary finite base-spine theorem
 finite-sieve / first-subcritical sacrifice
 actual prime-distribution consequences NOT_PROVEN
 ```
+
+For BT-0012, the correct status is:
+
+```text
+PROVED_IN_LEAN for the elementary actual-prime wheel upper bound
+COMPUTED_BY_PYTHON for sample prime tuple counts and open base-spine checks
+OPEN for the full arbitrary finite base-spine sacrifice theorem
+HEURISTIC for singular-series ranking beyond finite wheel counts
+NOT_PROVEN for Selberg-sieve or Hardy-Littlewood-type distribution claims
+```

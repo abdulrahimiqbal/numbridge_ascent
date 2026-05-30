@@ -524,6 +524,53 @@ def cmd_bt0011_discover_next(args: argparse.Namespace) -> int:
     return 0 if result["search_summary"]["holds"] else 1
 
 
+def cmd_bt0012_arbitrary_base_spine_check(args: argparse.Namespace) -> int:
+    from bridge.bt0012_breakthrough import verify_arbitrary_base_spine_check
+
+    try:
+        result = verify_arbitrary_base_spine_check(args.base, args.q)
+    except ValueError as exc:
+        print(f"Rejected: {exc}", file=sys.stderr)
+        return 2
+    print("# BT-0012 Arbitrary Base-Spine Check")
+    print(f"base={result['base_gates']} q={result['q']} gates={result['gates']}")
+    print(f"L={result['L']} B={result['B']} D={result['D']}")
+    print(f"predicted_max_score={result['predicted_max_score']}")
+    print(f"canonical={_format_pattern(list(result['canonical_attainer']))} score={result['canonical_score']}")
+    print(f"exact_bruteforce={result['exact_bruteforce']} checked_patterns={result['checked_patterns']}")
+    print(f"edge_counterexample={result['edge_counterexample']}")
+    print(f"holds={result['holds']}")
+    return 0 if result["holds"] else 1
+
+
+def cmd_bt0012_prime_wheel_bound(args: argparse.Namespace) -> int:
+    from bridge.bt0012_breakthrough import verify_prime_wheel_upper_bound
+
+    try:
+        result = verify_prime_wheel_upper_bound(args.gates, args.H, args.N)
+    except ValueError as exc:
+        print(f"Rejected: {exc}", file=sys.stderr)
+        return 2
+    print("# BT-0012 Prime Wheel Upper Bound")
+    print(f"pattern={_format_pattern(list(result['pattern']))} gates={result['gates']} N={result['N']}")
+    print(f"W={result['W']} wheel_survivor_count={result['wheel_survivor_count']}")
+    print(f"prime_tuple_count={result['prime_tuple_count']} block_bound={result['block_bound']}")
+    print(f"bad_translate_count={result['bad_translate_count']}")
+    print(f"classification={result['classification']}")
+    print(f"holds={result['holds']}")
+    return 0 if result["holds"] else 1
+
+
+def cmd_bt0012_breakthrough_audit(args: argparse.Namespace) -> int:
+    from bridge.bt0012_breakthrough import bt0012_breakthrough_audit
+
+    result = bt0012_breakthrough_audit()
+    print("# BT-0012 Breakthrough Audit")
+    for key, value in result.items():
+        print(f"{key}={value}")
+    return 0 if result["part_b_sample_holds"] else 1
+
+
 def cmd_branch_truth_report(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = paths.root / "numerology-branches.md"
@@ -649,7 +696,7 @@ def cmd_seek_lean_bridge(args: argparse.Namespace) -> int:
     paths = _paths(args)
     path = write_lean_bridge_report(paths)
     print(f"Wrote {path.relative_to(paths.root)}")
-    print("Top recommendation: close the full arbitrary finite base-spine BT-0011 theorem, or isolate the product-factor equality-edge lemma.")
+    print("Top recommendation: formulate BT-0013, a Selberg-sieve-style upper-bound bridge with explicit local obstruction constants.")
     return 0
 
 
@@ -816,6 +863,20 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--max-q", type=int, required=True)
     p.add_argument("--max-k", type=int, required=True)
     p.set_defaults(func=cmd_bt0011_discover_next)
+
+    p = sub.add_parser("bt0012-arbitrary-base-spine-check", help="Check the open arbitrary base-spine BT-0012 target")
+    p.add_argument("base", type=_parse_base_gates)
+    p.add_argument("q", type=_parse_named_int("q"))
+    p.set_defaults(func=cmd_bt0012_arbitrary_base_spine_check)
+
+    p = sub.add_parser("bt0012-prime-wheel-bound", help="Verify the elementary prime tuple wheel upper bound")
+    p.add_argument("H", type=_parse_offsets)
+    p.add_argument("gates", type=_parse_gates)
+    p.add_argument("N", type=_parse_named_int("N"))
+    p.set_defaults(func=cmd_bt0012_prime_wheel_bound)
+
+    p = sub.add_parser("bt0012-breakthrough-audit", help="Print BT-0012 breakthrough/pivot audit")
+    p.set_defaults(func=cmd_bt0012_breakthrough_audit)
 
     p = sub.add_parser("branch-truth-report", help="Print numerology branch truth taxonomy")
     p.set_defaults(func=cmd_branch_truth_report)

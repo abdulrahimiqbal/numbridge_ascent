@@ -208,3 +208,24 @@ and equality-edge search recorded for the requested window.
 Bridge Theorem:
 
 - `BT-0011`: general first-subcritical sacrifice theorem.
+
+## B-0012: Prime wheel upper bound
+
+Symbolic form: actual prime resonance must first pass through the finite
+wheel gates.
+
+Mathematical form: if `n + h` is prime for every offset `h` and every such
+prime is above every gate, then `n % gateProduct gates` is a wheel-survivor
+residue. Consequently, any Boolean enumerator sound for those prime tuple
+translates has count at most:
+
+```text
+WheelSurvivorCountGeneral gates H * (N / gateProduct gates + 1)
+```
+
+Status: PROVED_IN_LEAN as an elementary actual-prime wheel upper bound. This
+is not a Selberg sieve theorem and does not prove any prime tuple asymptotic.
+
+Bridge Theorem:
+
+- `BT-0012`: prime wheel upper bound.

@@ -21,6 +21,7 @@ structure behind a symbolic phrase.
 | BT-0009 | Subcritical resonance theorem | subcritical resonance, one gate sacrifice, partial lattice lock | below the full lattice threshold, best patterns keep the 6-lattice and sacrifice the 5-gate minimally | first subcritical `[2,3,5]`, `k=3`, `D=59` theorem proved | finite-sieve subcritical structural theorem |
 | BT-0010 | First subcritical sacrifice theorem | first subcritical zone, one gate sacrifice | for `[2,3,q]`, best first-subcritical patterns keep the 6-lattice and occupy exactly two q-residues | parametric upper bound and equality iff proved | finite-sieve parametric structural theorem |
 | BT-0011 | General first-subcritical sacrifice theorem | base-spine resonance, one gate sacrifice | for arbitrary two-gate base spines `[a,b]`, best first-subcritical patterns lock `a*b` and occupy exactly two q-residues | two-gate fallback theorem proved; arbitrary finite base spine open | finite-sieve two-gate structural theorem |
+| BT-0012 | Prime wheel upper bound | actual prime tuples must survive finite gates | prime tuple translates above gates land in wheel-survivor residues and satisfy a wheel-block count bound | elementary actual-prime wheel theorem proved | actual-prime bridge elementary |
 
 ## Current Lean Surface
 
@@ -88,6 +89,10 @@ NumBridge.two_gate_first_subcritical_upper_bound
 NumBridge.two_gate_first_subcritical_equality_forces_lock_and_q_sacrifice
 NumBridge.two_gate_first_subcritical_lock_and_q_sacrifice_attains
 NumBridge.bt0011_two_gate_first_subcritical_sacrifice_theorem
+NumBridge.prime_translate_avoids_each_gate_residue
+NumBridge.prime_tuple_translate_implies_wheel_survivor
+NumBridge.predicate_count_le_wheel_survivor_blocks
+NumBridge.bt0012_prime_tuple_wheel_upper_bound
 ```
 
 ## Honest Status
@@ -163,3 +168,11 @@ spines. For `2 <= a,b,q`, `Nat.Coprime a b`, `Nat.Coprime q (a*b)`, and
 and `LocalResidueShadowCount q H = 2`. The full arbitrary finite base-spine
 theorem remains open Lean work; Python performs bounded arbitrary-base checks
 and an equality-edge counterexample search.
+
+BT-0012 pivots out of local finite-sieve optimization. The arbitrary finite
+base-spine theorem remains open, but Lean now proves an elementary
+actual-prime bridge: prime tuple translates above all gates must occupy
+wheel-survivor residues, and any Boolean enumerator sound for those actual
+prime translates is bounded by the number of wheel survivor residues times the
+number of wheel blocks up to `N`. This is an actual-prime-count upper bound,
+not an analytic sieve theorem.
